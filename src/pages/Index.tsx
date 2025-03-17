@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import Hero from '@/components/Hero';
 import { useIntersectionObserver } from '@/lib/animations';
 import { cn } from '@/lib/utils';
-import { Pill, Microscope, Flask, Stethoscope, BarChart3, HeartPulse } from 'lucide-react';
+import { Pill, Microscope, TestTube, Stethoscope, BarChart3, HeartPulse } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import ProductCard from '@/components/ProductCard';
 
@@ -27,7 +27,7 @@ const Index = () => {
       description: 'Conducting groundbreaking research to advance medical knowledge and therapeutic options.',
     },
     {
-      icon: Flask,
+      icon: TestTube,
       title: 'Quality Control',
       description: 'Ensuring the highest standards of safety and efficacy in all our pharmaceutical products.',
     },

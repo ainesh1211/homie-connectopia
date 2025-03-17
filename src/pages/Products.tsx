@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useIntersectionObserver } from '@/lib/animations';
 import { cn } from '@/lib/utils';
 import { Search, Filter } from 'lucide-react';
+import ProductCard from '@/components/ProductCard';
 
 interface Product {
   id: number;
@@ -190,42 +191,11 @@ const Products = () => {
           {filteredProducts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredProducts.map((product, index) => (
-                <div
+                <ProductCard 
                   key={product.id}
-                  // @ts-ignore - TypeScript doesn't know ref can be assigned to HTMLDivElement
-                  ref={index === 0 ? ref : null}
-                  className={cn(
-                    "group h-full rounded-xl overflow-hidden bg-white shadow-sm border border-gray-100 transition-all duration-700 hover:shadow-lg hover:scale-[1.01]",
-                    isIntersecting ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                  )}
-                  style={{ transitionDelay: `${index * 100}ms` }}
-                >
-                  {/* Product Image */}
-                  <div className="relative h-64 w-full overflow-hidden">
-                    <div
-                      className="h-full w-full bg-cover bg-center transition-all duration-500 group-hover:scale-105"
-                      style={{ backgroundImage: `url(${product.image})` }}
-                    />
-                    <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 text-xs font-medium bg-secondary text-secondary-foreground rounded-full">
-                        {product.category}
-                      </span>
-                    </div>
-                  </div>
-                  
-                  {/* Product Details */}
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-3 transition-colors group-hover:text-primary">{product.name}</h3>
-                    
-                    <p className="text-muted-foreground mb-6">
-                      {product.description}
-                    </p>
-                    
-                    <button className="w-full py-3 text-sm font-medium transition-all duration-300 border border-primary/20 rounded-md hover:bg-primary hover:text-white">
-                      View Details
-                    </button>
-                  </div>
-                </div>
+                  product={product}
+                  delay={index * 100}
+                />
               ))}
             </div>
           ) : (
