@@ -42,11 +42,20 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <Link 
             to="/" 
-            className="text-2xl font-display font-bold tracking-tight relative z-10"
+            className="flex items-center text-2xl font-display font-bold tracking-tight relative z-10"
           >
-            <span className="animate-fade-in">Homes</span>
-            <span className="text-primary/80 animate-fade-in" style={{ animationDelay: '200ms' }}>N</span>
-            <span className="animate-fade-in" style={{ animationDelay: '400ms' }}>Homies</span>
+            <div className="h-10 w-10 mr-2">
+              <img 
+                src="/lovable-uploads/5fadc097-109f-4e98-af3f-dd7c9d3602dc.png" 
+                alt="Homes N Homies Logo" 
+                className="h-full w-full object-contain"
+              />
+            </div>
+            <div>
+              <span className="animate-fade-in">Homes</span>
+              <span className="text-primary/80 animate-fade-in" style={{ animationDelay: '200ms' }}>N</span>
+              <span className="animate-fade-in" style={{ animationDelay: '400ms' }}>Homies</span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
