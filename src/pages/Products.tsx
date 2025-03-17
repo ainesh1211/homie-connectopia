@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useIntersectionObserver } from '@/lib/animations';
 import { cn } from '@/lib/utils';
-import { Search, Filter } from 'lucide-react';
+import { Search, Filter, Pill, TestTube, Heart, Microscope, Stethoscope, PillBottle } from 'lucide-react';
 import ProductCard from '@/components/ProductCard';
 
 interface Product {
@@ -76,6 +76,69 @@ const productsData: Product[] = [
     category: "Gastroenterology",
     image: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?q=80&w=1170",
     description: "Digestive support for optimal gastrointestinal function"
+  },
+  {
+    id: 10,
+    name: "Azithromycin Tablets",
+    category: "Antibiotics",
+    image: "https://images.unsplash.com/photo-1550572017-edd951b55104?q=80&w=1170",
+    description: "Broad-spectrum antibiotic effective against bacterial infections"
+  },
+  {
+    id: 11,
+    name: "Atorvastatin Calcium",
+    category: "Cardiovascular",
+    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=1160",
+    description: "Cholesterol-lowering medication to reduce heart disease risk"
+  },
+  {
+    id: 12,
+    name: "Metformin HCL",
+    category: "Diabetes",
+    image: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=1169",
+    description: "Oral medication to control blood sugar levels in type 2 diabetes"
+  },
+  {
+    id: 13,
+    name: "Pregabalin Capsules",
+    category: "Neurology",
+    image: "https://images.unsplash.com/photo-1631549916768-4119b4123a51?q=80&w=1179",
+    description: "Anti-seizure medication also used for nerve pain management"
+  },
+  {
+    id: 14,
+    name: "Pantoprazole Sodium",
+    category: "Gastroenterology",
+    image: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?q=80&w=1170",
+    description: "Proton pump inhibitor for treating GERD and stomach ulcers"
+  },
+  {
+    id: 15,
+    name: "Montelukast Sodium",
+    category: "Respiratory",
+    image: "https://images.unsplash.com/photo-1631549917756-23a40a2f5b91?q=80&w=1170",
+    description: "Medication for asthma prevention and allergy symptom control"
+  },
+  {
+    id: 16,
+    name: "Ciprofloxacin HCL",
+    category: "Antibiotics",
+    image: "https://images.unsplash.com/photo-1550572017-edd951b55104?q=80&w=1170",
+    description: "Potent antibiotic for treating severe bacterial infections"
+  },
+  {
+    id: 17,
+    name: "Paracetamol Tablets",
+    category: "Pain Relief",
+    image: "https://images.unsplash.com/photo-1558452919-08ae4aea8e29?q=80&w=1171",
+    description: "Pain reliever and fever reducer for mild to moderate pain"
+  },
+  {
+    id: 18,
+    name: "Domperidone Tablets",
+    category: "Gastroenterology",
+    image: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?q=80&w=1170",
+    description: "Medication for treating nausea, vomiting and gastric reflux"
   }
 ];
 
@@ -89,8 +152,24 @@ const categories = [
   "Respiratory",
   "Dermatology",
   "Oncology",
-  "Gastroenterology"
+  "Gastroenterology",
+  "Antibiotics",
+  "Pain Relief"
 ];
+
+const categoryIcons = {
+  "Cardiovascular": Heart,
+  "Immunity": Microscope,
+  "Neurology": TestTube,
+  "Diabetes": PillBottle,
+  "Orthopedic": Stethoscope,
+  "Respiratory": TestTube,
+  "Dermatology": Pill,
+  "Oncology": Microscope,
+  "Gastroenterology": PillBottle,
+  "Antibiotics": Pill,
+  "Pain Relief": PillBottle
+};
 
 const Products = () => {
   const [ref, isIntersecting] = useIntersectionObserver();
@@ -181,6 +260,32 @@ const Products = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Category Pills */}
+      <section className="py-6">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-wrap gap-2 justify-center">
+            {categories.map((category) => {
+              const IconComponent = category !== "All" ? categoryIcons[category as keyof typeof categoryIcons] : null;
+              return (
+                <button
+                  key={category}
+                  className={cn(
+                    "flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-medium transition-all",
+                    selectedCategory === category
+                      ? "bg-primary text-white"
+                      : "bg-primary/10 hover:bg-primary/20"
+                  )}
+                  onClick={() => setSelectedCategory(category)}
+                >
+                  {IconComponent && <IconComponent className="w-4 h-4" />}
+                  {category}
+                </button>
+              );
+            })}
           </div>
         </div>
       </section>
