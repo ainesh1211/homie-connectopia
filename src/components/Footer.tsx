@@ -1,6 +1,5 @@
 
 import { Link } from 'react-router-dom';
-import { cn } from '@/lib/utils';
 import { Instagram, Facebook, Twitter, Mail, MapPin, Phone } from 'lucide-react';
 
 const Footer = () => {
@@ -12,9 +11,16 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Company Info */}
           <div>
-            <h3 className="text-xl font-bold mb-6">Homes N Homies</h3>
+            <div className="flex items-center mb-4">
+              <img 
+                src="/lovable-uploads/bae17041-2fa0-4a74-bdb6-1325e7c83377.png" 
+                alt="Inaaya Healthtech Logo" 
+                className="h-10 w-10 mr-2"
+              />
+              <h3 className="text-xl font-bold">Inaaya Healthtech</h3>
+            </div>
             <p className="text-white/70 mb-6">
-              Creating exceptional living spaces that perfectly balance elegance, comfort, and functionality.
+              Dedicated to developing innovative pharmaceutical solutions that enhance quality of life and address critical healthcare challenges worldwide.
             </p>
             <div className="flex space-x-4">
               <a 
@@ -45,7 +51,7 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-bold mb-6">Quick Links</h3>
             <ul className="space-y-3">
-              {['Home', 'About', 'Services', 'Properties', 'Contact'].map((link) => (
+              {['Home', 'Products', 'About', 'Services', 'Contact'].map((link) => (
                 <li key={link}>
                   <Link 
                     to={link === 'Home' ? '/' : `/${link.toLowerCase()}`}
@@ -59,24 +65,24 @@ const Footer = () => {
             </ul>
           </div>
           
-          {/* Services */}
+          {/* Products */}
           <div>
-            <h3 className="text-xl font-bold mb-6">Our Services</h3>
+            <h3 className="text-xl font-bold mb-6">Our Products</h3>
             <ul className="space-y-3">
               {[
-                'Home Staging', 
-                'Interior Design', 
-                'Real Estate', 
-                'Renovation', 
-                'Property Management'
-              ].map((service) => (
-                <li key={service}>
+                'Prescription Medicines', 
+                'Generic Drugs', 
+                'Medical Devices', 
+                'Consumer Healthcare', 
+                'Research Solutions'
+              ].map((product) => (
+                <li key={product}>
                   <Link 
-                    to="/services"
+                    to="/products"
                     className="text-white/70 hover:text-white transition-colors duration-200 flex items-center"
                   >
                     <span className="mr-2">›</span>
-                    {service}
+                    {product}
                   </Link>
                 </li>
               ))}
@@ -90,17 +96,17 @@ const Footer = () => {
               <li className="flex items-start">
                 <MapPin className="w-5 h-5 mr-3 mt-0.5 text-white/70" />
                 <span className="text-white/70">
-                  123 Design Street, Creative City, CA 90210
+                  123 Pharma Street, Medical District, New Delhi, 110001
                 </span>
               </li>
               <li className="flex items-center">
                 <Phone className="w-5 h-5 mr-3 text-white/70" />
-                <span className="text-white/70">(123) 456-7890</span>
+                <span className="text-white/70">+91 123 456 7890</span>
               </li>
               <li className="flex items-center">
                 <Mail className="w-5 h-5 mr-3 text-white/70" />
-                <a href="mailto:info@homesnhomies.com" className="text-white/70 hover:text-white transition-colors duration-200">
-                  info@homesnhomies.com
+                <a href="mailto:info@inaayahealthtech.com" className="text-white/70 hover:text-white transition-colors duration-200">
+                  info@inaayahealthtech.com
                 </a>
               </li>
             </ul>
@@ -108,7 +114,7 @@ const Footer = () => {
         </div>
         
         <div className="pt-8 border-t border-white/10 text-center text-white/50 text-sm">
-          <p>© {currentYear} Homes N Homies. All rights reserved.</p>
+          <p>© {currentYear} Inaaya Healthtech. All rights reserved.</p>
         </div>
       </div>
     </footer>

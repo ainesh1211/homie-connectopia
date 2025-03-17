@@ -11,6 +11,7 @@ const Navbar = () => {
   
   const navLinks = [
     { title: 'Home', path: '/' },
+    { title: 'Products', path: '/products' },
     { title: 'About', path: '/about' },
     { title: 'Services', path: '/services' },
     { title: 'Contact', path: '/contact' }
@@ -46,15 +47,14 @@ const Navbar = () => {
           >
             <div className="h-10 w-10 mr-2">
               <img 
-                src="/lovable-uploads/5fadc097-109f-4e98-af3f-dd7c9d3602dc.png" 
-                alt="Homes N Homies Logo" 
+                src="/lovable-uploads/bae17041-2fa0-4a74-bdb6-1325e7c83377.png" 
+                alt="Inaaya Healthtech Logo" 
                 className="h-full w-full object-contain"
               />
             </div>
             <div>
-              <span className="animate-fade-in">Homes</span>
-              <span className="text-primary/80 animate-fade-in" style={{ animationDelay: '200ms' }}>N</span>
-              <span className="animate-fade-in" style={{ animationDelay: '400ms' }}>Homies</span>
+              <span className="text-primary animate-fade-in">Inaaya</span>
+              <span className="text-secondary animate-fade-in" style={{ animationDelay: '200ms' }}>Healthtech</span>
             </div>
           </Link>
 
@@ -84,7 +84,7 @@ const Navbar = () => {
                   : 'border border-primary/20 hover:bg-primary hover:text-white'
               )}
             >
-              Book Now
+              Get in Touch
             </Link>
           </nav>
 
@@ -134,7 +134,7 @@ const Navbar = () => {
           )}
           style={{ animationDelay: '250ms' }}
         >
-          Book Now
+          Get in Touch
         </Link>
       </div>
     </header>

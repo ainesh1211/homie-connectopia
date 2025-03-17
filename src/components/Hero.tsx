@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { ArrowDownIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useSmoothScroll } from '@/lib/animations';
+import { Button } from '@/components/ui/button';
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -27,10 +28,10 @@ const Hero = () => {
             isLoaded ? "blur-0 scale-100" : "blur-2xl scale-110"
           )}
           style={{
-            backgroundImage: 'url("https://images.unsplash.com/photo-1721322800607-8c38375eef04")',
+            backgroundImage: 'url("https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=2069")',
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/20" />
       </div>
       
       {/* Hero Content */}
@@ -42,7 +43,7 @@ const Hero = () => {
               isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             )}
           >
-            Your Dream Home Awaits
+            Innovative Healthcare Solutions
           </span>
           
           <h1 
@@ -51,7 +52,7 @@ const Hero = () => {
               isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             )}
           >
-            Find Your Perfect Place <br /> To Call Home
+            Advancing Health <br /> Through Innovation
           </h1>
           
           <p 
@@ -60,8 +61,8 @@ const Hero = () => {
               isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             )}
           >
-            Discover exceptional living spaces designed with both style and comfort in mind. 
-            Let us help you create the home you've always envisioned.
+            At Inaaya Healthtech, we're committed to developing pharmaceutical solutions 
+            that improve quality of life and address critical healthcare challenges.
           </p>
           
           <div 
@@ -70,16 +71,17 @@ const Hero = () => {
               isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             )}
           >
-            <button 
-              className="px-8 py-3 font-medium text-white bg-primary hover:bg-primary/90 rounded-md transition-all duration-300 hover-lift"
+            <Button 
+              className="px-8 py-6 font-medium text-white bg-primary hover:bg-primary/90 rounded-md transition-all duration-300 hover-lift"
             >
-              Explore Homes
-            </button>
-            <button 
-              className="px-8 py-3 font-medium text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-md transition-all duration-300 hover-lift"
+              Our Products
+            </Button>
+            <Button 
+              variant="outline"
+              className="px-8 py-6 font-medium text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 rounded-md transition-all duration-300 hover-lift"
             >
-              Our Services
-            </button>
+              Learn About Us
+            </Button>
           </div>
         </div>
       </div>
