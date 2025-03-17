@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import ServiceCard from '@/components/ServiceCard';
 import { useIntersectionObserver } from '@/lib/animations';
 import { cn } from '@/lib/utils';
-import { Home, Paintbrush, Users, Key, Settings, Refresh, Sparkles, Search, ArrowRight } from 'lucide-react';
+import { Home, Paintbrush, Users, Key, Settings, RefreshCw, Sparkles, Search, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Services = () => {
@@ -71,7 +71,7 @@ const Services = () => {
       ]
     },
     {
-      icon: Refresh,
+      icon: RefreshCw,
       title: 'Home Styling',
       description: 'Refresh your space with our styling expertise to create a cohesive and inviting atmosphere that reflects your personality.',
       features: [

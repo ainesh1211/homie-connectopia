@@ -1,11 +1,10 @@
-
 import { useEffect } from 'react';
 import Hero from '@/components/Hero';
 import FeaturedSection from '@/components/FeaturedSection';
 import ServiceCard from '@/components/ServiceCard';
 import { useIntersectionObserver } from '@/lib/animations';
 import { cn } from '@/lib/utils';
-import { Home, Paintbrush, Users, Key, Settings, Refresh } from 'lucide-react';
+import { Home, Paintbrush, Users, Key, Settings, RefreshCw } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Index = () => {
@@ -43,7 +42,7 @@ const Index = () => {
       description: 'Upgrade your space with our high-quality renovation and remodeling services.',
     },
     {
-      icon: Refresh,
+      icon: RefreshCw,
       title: 'Home Styling',
       description: 'Refresh your space with our styling expertise to create a cohesive and inviting atmosphere.',
     },
