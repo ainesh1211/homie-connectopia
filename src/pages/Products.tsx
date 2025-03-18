@@ -179,12 +179,10 @@ const Products = () => {
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(productsData);
   
   useEffect(() => {
-    // Scroll to top on page load
     window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
-    // Filter products based on search term and category
     const filtered = productsData.filter(product => {
       const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                           product.description.toLowerCase().includes(searchTerm.toLowerCase());
@@ -198,7 +196,6 @@ const Products = () => {
 
   return (
     <main className="min-h-screen pt-24 pb-20">
-      {/* Header */}
       <section className="py-12 md:py-20 bg-gradient-to-b from-primary/10 to-transparent">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
@@ -213,7 +210,6 @@ const Products = () => {
             </p>
           </div>
           
-          {/* Search and Filter */}
           <div className="max-w-4xl mx-auto mt-12">
             <div className="flex flex-col md:flex-row gap-4 mb-8">
               <div className="relative flex-1">
@@ -265,7 +261,6 @@ const Products = () => {
         </div>
       </section>
       
-      {/* Category Pills */}
       <section className="py-6">
         <div className="container mx-auto px-6">
           <div className="flex flex-wrap gap-2 justify-center">
@@ -291,7 +286,6 @@ const Products = () => {
         </div>
       </section>
       
-      {/* Products Grid */}
       <section className="py-12 md:py-20">
         <div className="container mx-auto px-6">
           {filteredProducts.length > 0 ? (
@@ -315,7 +309,6 @@ const Products = () => {
         </div>
       </section>
       
-      {/* CTA Section */}
       <section className="py-16 px-4 bg-secondary/20">
         <div className="container mx-auto">
           <div className="max-w-3xl mx-auto text-center">

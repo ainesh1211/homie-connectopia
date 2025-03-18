@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useIntersectionObserver, useImageLoader } from '@/lib/animations';
 import { cn } from '@/lib/utils';
 import { ArrowRightIcon } from 'lucide-react';
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 interface Product {
   id: number;
@@ -21,6 +22,7 @@ const ProductCard = ({ product, delay = 0 }: ProductCardProps) => {
   const [ref, isIntersecting] = useIntersectionObserver();
   const isImageLoaded = useImageLoader(product.image);
   const [isHovered, setIsHovered] = useState(false);
+  const [imageError, setImageError] = useState(false);
   
   return (
     <div
@@ -37,20 +39,30 @@ const ProductCard = ({ product, delay = 0 }: ProductCardProps) => {
     >
       {/* Product Image */}
       <div className="relative h-64 w-full overflow-hidden">
-        <div
-          className={cn(
-            "h-full w-full bg-cover bg-center transition-all duration-700",
-            isImageLoaded ? "blur-0 scale-100" : "blur-md scale-110",
-            isHovered ? "scale-110" : "group-hover:scale-105"
+        <AspectRatio ratio={16/9} className="bg-muted h-64">
+          {!imageError ? (
+            <img
+              src={product.image}
+              alt={product.name}
+              className={cn(
+                "h-full w-full object-cover transition-all duration-700",
+                isImageLoaded ? "blur-0 scale-100" : "blur-md scale-110",
+                isHovered ? "scale-110" : "group-hover:scale-105"
+              )}
+              onError={() => setImageError(true)}
+            />
+          ) : (
+            <div className="flex items-center justify-center h-full w-full bg-muted">
+              <span className="text-muted-foreground">{product.name}</span>
+            </div>
           )}
-          style={{ backgroundImage: `url(${product.image})` }}
-        />
-        <div className="absolute top-4 left-4">
-          <span className="px-3 py-1 text-xs font-medium bg-secondary text-secondary-foreground rounded-full">
-            {product.category}
-          </span>
-        </div>
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent h-24" />
+          <div className="absolute top-4 left-4">
+            <span className="px-3 py-1 text-xs font-medium bg-secondary text-secondary-foreground rounded-full">
+              {product.category}
+            </span>
+          </div>
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent h-24" />
+        </AspectRatio>
       </div>
       
       {/* Product Details */}
