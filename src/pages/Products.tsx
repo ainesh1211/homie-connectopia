@@ -1,8 +1,7 @@
-
 import { useState, useEffect } from 'react';
 import { useIntersectionObserver } from '@/lib/animations';
 import { cn } from '@/lib/utils';
-import { Search, Filter, Pill, TestTube, Heart, Microscope, Stethoscope, PillBottle } from 'lucide-react';
+import { Search, Filter, Pill, TestTube, Heart, Microscope, Stethoscope, PillBottle, Tablets, Droplet } from 'lucide-react';
 import ProductCard from '@/components/ProductCard';
 
 interface Product {
@@ -16,159 +15,161 @@ interface Product {
 const productsData: Product[] = [
   {
     id: 1,
-    name: "Cardiocare Plus",
+    name: "Apixaban",
     category: "Cardiovascular",
-    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=1160",
-    description: "Advanced formula for cardiovascular health support"
+    image: "https://inaayahealthtech.com/images/apixaban.jpg",
+    description: "Oral anticoagulant for preventing blood clots in various conditions"
   },
   {
     id: 2,
-    name: "ImmunoBoost Pro",
-    category: "Immunity",
-    image: "https://images.unsplash.com/photo-1626701328626-64a3ad9eb5c9?q=80&w=1170",
-    description: "Enhanced immune system support with vital nutrients"
+    name: "Brivaracetam",
+    category: "Neurology",
+    image: "https://inaayahealthtech.com/images/briva.jpg",
+    description: "Anti-epileptic medication for treating partial-onset seizures"
   },
   {
     id: 3,
-    name: "NeuroVital",
-    category: "Neurology",
-    image: "https://images.unsplash.com/photo-1631549916768-4119b4123a51?q=80&w=1179",
-    description: "Specialized formula for cognitive function and brain health"
+    name: "Dapagliflozin",
+    category: "Diabetes",
+    image: "https://inaayahealthtech.com/images/dapagliflozin.jpg",
+    description: "SGLT2 inhibitor for improving glycemic control in type 2 diabetes"
   },
   {
     id: 4,
-    name: "GlucoBalance",
+    name: "Empagliflozin",
     category: "Diabetes",
-    image: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=1169",
-    description: "Supports healthy blood glucose levels and metabolic function"
+    image: "https://inaayahealthtech.com/images/Empagliflozin.jpg",
+    description: "SGLT2 inhibitor that reduces blood sugar levels in type 2 diabetes"
   },
   {
     id: 5,
-    name: "ArthroFlex",
-    category: "Orthopedic",
-    image: "https://images.unsplash.com/photo-1617881770125-6fb0d039ecad?q=80&w=1587",
-    description: "Joint support formula for improved mobility and flexibility"
+    name: "Ivabradine",
+    category: "Cardiovascular",
+    image: "https://inaayahealthtech.com/images/Ivabradine.jpg",
+    description: "Heart rate lowering agent for treating chronic heart failure"
   },
   {
     id: 6,
-    name: "RespiClear",
-    category: "Respiratory",
-    image: "https://images.unsplash.com/photo-1631549917756-23a40a2f5b91?q=80&w=1170",
-    description: "Respiratory support for clear breathing and lung health"
+    name: "Tofacitinib",
+    category: "Rheumatology",
+    image: "https://inaayahealthtech.com/images/tofacitinib.jpg",
+    description: "JAK inhibitor for treating rheumatoid arthritis and other inflammatory conditions"
   },
   {
     id: 7,
-    name: "DermaRenew",
-    category: "Dermatology",
-    image: "https://images.unsplash.com/photo-1577003811926-53b288a6e5d0?q=80&w=1170",
-    description: "Advanced skincare formula for rejuvenation and repair"
+    name: "Levetiracetam",
+    category: "Neurology",
+    image: "https://inaayahealthtech.com/images/Levetiracetam.jpg",
+    description: "Anti-epileptic drug for treating epilepsy and seizure disorders"
   },
   {
     id: 8,
-    name: "OncoCare",
-    category: "Oncology",
-    image: "https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=1170",
-    description: "Supportive care formula for oncology patients"
+    name: "Linagliptin",
+    category: "Diabetes",
+    image: "https://inaayahealthtech.com/images/Linagliptin.jpg",
+    description: "DPP-4 inhibitor that helps control blood sugar levels in type 2 diabetes"
   },
   {
     id: 9,
-    name: "DigestEase",
-    category: "Gastroenterology",
-    image: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?q=80&w=1170",
-    description: "Digestive support for optimal gastrointestinal function"
+    name: "Nintedanib",
+    category: "Respiratory",
+    image: "https://inaayahealthtech.com/images/Nintedanib.jpg",
+    description: "Treatment for idiopathic pulmonary fibrosis and other interstitial lung diseases"
   },
   {
     id: 10,
-    name: "Azithromycin Tablets",
-    category: "Antibiotics",
-    image: "https://images.unsplash.com/photo-1550572017-edd951b55104?q=80&w=1170",
-    description: "Broad-spectrum antibiotic effective against bacterial infections"
+    name: "Pirfenidone",
+    category: "Respiratory",
+    image: "https://inaayahealthtech.com/images/Pirfenidone.jpg",
+    description: "Anti-fibrotic medication used to treat idiopathic pulmonary fibrosis"
   },
   {
     id: 11,
-    name: "Atorvastatin Calcium",
-    category: "Cardiovascular",
-    image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=1160",
-    description: "Cholesterol-lowering medication to reduce heart disease risk"
+    name: "Sitagliptin",
+    category: "Diabetes",
+    image: "https://inaayahealthtech.com/images/sitagliptin.jpg",
+    description: "Oral medication that helps control blood sugar levels in type 2 diabetes"
   },
   {
     id: 12,
-    name: "Metformin HCL",
+    name: "Vildagliptin",
     category: "Diabetes",
-    image: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=1169",
-    description: "Oral medication to control blood sugar levels in type 2 diabetes"
+    image: "https://inaayahealthtech.com/images/Vildagliptin.jpg",
+    description: "DPP-4 inhibitor for improving glycemic control in type 2 diabetes"
   },
   {
     id: 13,
-    name: "Pregabalin Capsules",
-    category: "Neurology",
-    image: "https://images.unsplash.com/photo-1631549916768-4119b4123a51?q=80&w=1179",
-    description: "Anti-seizure medication also used for nerve pain management"
+    name: "Vorapaxar",
+    category: "Cardiovascular",
+    image: "https://inaayahealthtech.com/images/vorapaxar.jpg",
+    description: "Antiplatelet medication for reducing thrombotic cardiovascular events"
   },
   {
     id: 14,
-    name: "Pantoprazole Sodium",
-    category: "Gastroenterology",
-    image: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?q=80&w=1170",
-    description: "Proton pump inhibitor for treating GERD and stomach ulcers"
+    name: "Acarbose",
+    category: "Diabetes",
+    image: "https://inaayahealthtech.com/images/acarbose.jpg",
+    description: "Alpha-glucosidase inhibitor that slows the digestion of carbohydrates"
   },
   {
     id: 15,
-    name: "Montelukast Sodium",
-    category: "Respiratory",
-    image: "https://images.unsplash.com/photo-1631549917756-23a40a2f5b91?q=80&w=1170",
-    description: "Medication for asthma prevention and allergy symptom control"
+    name: "Teneligliptin",
+    category: "Diabetes",
+    image: "https://inaayahealthtech.com/images/teneleg.png",
+    description: "DPP-4 inhibitor for treating type 2 diabetes mellitus"
   },
   {
     id: 16,
-    name: "Ciprofloxacin HCL",
-    category: "Antibiotics",
-    image: "https://images.unsplash.com/photo-1550572017-edd951b55104?q=80&w=1170",
-    description: "Potent antibiotic for treating severe bacterial infections"
+    name: "Dabigatran",
+    category: "Cardiovascular",
+    image: "https://inaayahealthtech.com/images/DABIG.jpg",
+    description: "Direct thrombin inhibitor used to prevent blood clots and stroke"
   },
   {
     id: 17,
-    name: "Paracetamol Tablets",
-    category: "Pain Relief",
-    image: "https://images.unsplash.com/photo-1558452919-08ae4aea8e29?q=80&w=1171",
-    description: "Pain reliever and fever reducer for mild to moderate pain"
+    name: "Rivaroxaban",
+    category: "Cardiovascular",
+    image: "https://inaayahealthtech.com/images/rivaroxaban.jpg",
+    description: "Factor Xa inhibitor anticoagulant for preventing blood clots"
   },
   {
     id: 18,
-    name: "Domperidone Tablets",
-    category: "Gastroenterology",
-    image: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?q=80&w=1170",
-    description: "Medication for treating nausea, vomiting and gastric reflux"
+    name: "Baricitinib",
+    category: "Rheumatology",
+    image: "https://inaayahealthtech.com/images/BARIC.jpg",
+    description: "JAK inhibitor used to treat rheumatoid arthritis and other conditions"
+  },
+  {
+    id: 19,
+    name: "Edoxaban",
+    category: "Cardiovascular",
+    image: "https://inaayahealthtech.com/images/Edoxaban.jpg",
+    description: "Factor Xa inhibitor for treatment and prevention of blood clots"
+  },
+  {
+    id: 20,
+    name: "Vortioxetine",
+    category: "Neurology",
+    image: "https://inaayahealthtech.com/images/vortioxetine.jpg",
+    description: "Multimodal antidepressant for treating major depressive disorder"
   }
 ];
 
 const categories = [
   "All",
   "Cardiovascular",
-  "Immunity",
   "Neurology",
   "Diabetes",
-  "Orthopedic",
   "Respiratory",
-  "Dermatology",
-  "Oncology",
-  "Gastroenterology",
-  "Antibiotics",
-  "Pain Relief"
+  "Rheumatology"
 ];
 
 const categoryIcons = {
   "Cardiovascular": Heart,
-  "Immunity": Microscope,
   "Neurology": TestTube,
   "Diabetes": PillBottle,
-  "Orthopedic": Stethoscope,
-  "Respiratory": TestTube,
-  "Dermatology": Pill,
-  "Oncology": Microscope,
-  "Gastroenterology": PillBottle,
-  "Antibiotics": Pill,
-  "Pain Relief": PillBottle
+  "Respiratory": Droplet,
+  "Rheumatology": Stethoscope
 };
 
 const Products = () => {
