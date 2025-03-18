@@ -70,11 +70,11 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-6">Our Products</h3>
             <ul className="space-y-3">
               {[
-                'Prescription Medicines', 
-                'Generic Drugs', 
-                'Medical Devices', 
-                'Consumer Healthcare', 
-                'Research Solutions'
+                'Antibiotics', 
+                'Cardiovascular Medicines', 
+                'Diabetes Care', 
+                'Respiratory Treatments', 
+                'Neurological Solutions'
               ].map((product) => (
                 <li key={product}>
                   <Link 
@@ -96,7 +96,7 @@ const Footer = () => {
               <li className="flex items-start">
                 <MapPin className="w-5 h-5 mr-3 mt-0.5 text-white/70" />
                 <span className="text-white/70">
-                  123 Pharma Street, Medical District, New Delhi, 110001
+                  Inaaya Healthtech, Sector 20, Panchkula, Haryana 134109
                 </span>
               </li>
               <li className="flex items-center">

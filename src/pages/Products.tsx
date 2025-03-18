@@ -15,148 +15,93 @@ interface Product {
 const productsData: Product[] = [
   {
     id: 1,
-    name: "Apixaban",
-    category: "Cardiovascular",
-    image: "https://inaayahealthtech.com/images/apixaban.jpg",
-    description: "Oral anticoagulant for preventing blood clots in various conditions"
+    name: "INAACURE-200 LB",
+    category: "Antibiotics",
+    image: "https://inaayahealthtech.com/images/inaacure-200-lb.jpg",
+    description: "Cefixime & Lactic acid Dispersible Tablets 200mg | Packing: 10x10 | MRP: ₹1600.00"
   },
   {
     id: 2,
-    name: "Brivaracetam",
-    category: "Neurology",
-    image: "https://inaayahealthtech.com/images/briva.jpg",
-    description: "Anti-epileptic medication for treating partial-onset seizures"
+    name: "INAACURE-100",
+    category: "Antibiotics",
+    image: "https://inaayahealthtech.com/images/inaacure-100.jpg",
+    description: "Cefixime Dispersible Tablets 100mg | Packing: 10x10 | MRP: ₹1100.00"
   },
   {
     id: 3,
-    name: "Dapagliflozin",
-    category: "Diabetes",
-    image: "https://inaayahealthtech.com/images/dapagliflozin.jpg",
-    description: "SGLT2 inhibitor for improving glycemic control in type 2 diabetes"
+    name: "INAACURE-O",
+    category: "Antibiotics",
+    image: "https://inaayahealthtech.com/images/inaacure-o.jpg",
+    description: "Cefixime & Ofloxacin Tablets | Packing: 10x10 | MRP: ₹1900.00"
   },
   {
     id: 4,
-    name: "Empagliflozin",
-    category: "Diabetes",
-    image: "https://inaayahealthtech.com/images/Empagliflozin.jpg",
-    description: "SGLT2 inhibitor that reduces blood sugar levels in type 2 diabetes"
+    name: "AMOXINYA-CV 625 LB",
+    category: "Antibiotics",
+    image: "https://inaayahealthtech.com/images/amoxinya-cv-625-lb.jpg",
+    description: "Amoxycillin, Potassium clavulanate &Lactic acid Tablet IP 625mg | Packing: 10x1x10 | MRP: ₹2800.00"
   },
   {
     id: 5,
-    name: "Ivabradine",
-    category: "Cardiovascular",
-    image: "https://inaayahealthtech.com/images/Ivabradine.jpg",
-    description: "Heart rate lowering agent for treating chronic heart failure"
+    name: "INAAYACILLIN-500",
+    category: "Antibiotics",
+    image: "https://inaayahealthtech.com/images/inaayacillin-500.jpg",
+    description: "Amoxycillin 500mg | Packing: 10x10 | MRP: ₹823.20"
   },
   {
     id: 6,
-    name: "Tofacitinib",
-    category: "Rheumatology",
-    image: "https://inaayahealthtech.com/images/tofacitinib.jpg",
-    description: "JAK inhibitor for treating rheumatoid arthritis and other inflammatory conditions"
+    name: "AZICAN-250",
+    category: "Antibiotics",
+    image: "https://inaayahealthtech.com/images/azican-250.jpg",
+    description: "Azithromycin Tablet 250mg | Packing: 10x6 | MRP: ₹690.00"
   },
   {
     id: 7,
-    name: "Levetiracetam",
-    category: "Neurology",
-    image: "https://inaayahealthtech.com/images/Levetiracetam.jpg",
-    description: "Anti-epileptic drug for treating epilepsy and seizure disorders"
+    name: "AZICAN-500",
+    category: "Antibiotics",
+    image: "https://inaayahealthtech.com/images/azican-500.jpg",
+    description: "Azithromycin Tablet 500mg | Packing: 10x10 | MRP: ₹700.00"
   },
   {
     id: 8,
-    name: "Linagliptin",
-    category: "Diabetes",
-    image: "https://inaayahealthtech.com/images/Linagliptin.jpg",
-    description: "DPP-4 inhibitor that helps control blood sugar levels in type 2 diabetes"
+    name: "INAAYDOXY-LB",
+    category: "Antibiotics",
+    image: "https://inaayahealthtech.com/images/inaaydoxy-lb.jpg",
+    description: "Doxycycline & Lactic acid Bacillus Capsules | Packing: 10x10 | MRP: ₹750.00"
   },
   {
     id: 9,
-    name: "Nintedanib",
-    category: "Respiratory",
-    image: "https://inaayahealthtech.com/images/Nintedanib.jpg",
-    description: "Treatment for idiopathic pulmonary fibrosis and other interstitial lung diseases"
+    name: "OFFLXCAN-200",
+    category: "Antibiotics",
+    image: "https://inaayahealthtech.com/images/offlxcan-200.jpg",
+    description: "Ofloxacin Tablet 200mg | Packing: 10x10 | MRP: ₹680.00"
   },
   {
     id: 10,
-    name: "Pirfenidone",
-    category: "Respiratory",
-    image: "https://inaayahealthtech.com/images/Pirfenidone.jpg",
-    description: "Anti-fibrotic medication used to treat idiopathic pulmonary fibrosis"
+    name: "OFFLXCAN-OZ",
+    category: "Antibiotics",
+    image: "https://inaayahealthtech.com/images/offlxcan-oz.jpg",
+    description: "Ofloxacin &Ornidazole Tablet | Packing: 10x10 | MRP: ₹1350.00"
   },
   {
     id: 11,
-    name: "Sitagliptin",
-    category: "Diabetes",
-    image: "https://inaayahealthtech.com/images/sitagliptin.jpg",
-    description: "Oral medication that helps control blood sugar levels in type 2 diabetes"
+    name: "INAYA-LID",
+    category: "Antibiotics",
+    image: "https://inaayahealthtech.com/images/inaya-lid.jpg",
+    description: "Linezolid 600mg | Packing: 10x10 | MRP: ₹2500.00"
   },
   {
     id: 12,
-    name: "Vildagliptin",
-    category: "Diabetes",
-    image: "https://inaayahealthtech.com/images/Vildagliptin.jpg",
-    description: "DPP-4 inhibitor for improving glycemic control in type 2 diabetes"
-  },
-  {
-    id: 13,
-    name: "Vorapaxar",
-    category: "Cardiovascular",
-    image: "https://inaayahealthtech.com/images/vorapaxar.jpg",
-    description: "Antiplatelet medication for reducing thrombotic cardiovascular events"
-  },
-  {
-    id: 14,
-    name: "Acarbose",
-    category: "Diabetes",
-    image: "https://inaayahealthtech.com/images/acarbose.jpg",
-    description: "Alpha-glucosidase inhibitor that slows the digestion of carbohydrates"
-  },
-  {
-    id: 15,
-    name: "Teneligliptin",
-    category: "Diabetes",
-    image: "https://inaayahealthtech.com/images/teneleg.png",
-    description: "DPP-4 inhibitor for treating type 2 diabetes mellitus"
-  },
-  {
-    id: 16,
-    name: "Dabigatran",
-    category: "Cardiovascular",
-    image: "https://inaayahealthtech.com/images/DABIG.jpg",
-    description: "Direct thrombin inhibitor used to prevent blood clots and stroke"
-  },
-  {
-    id: 17,
-    name: "Rivaroxaban",
-    category: "Cardiovascular",
-    image: "https://inaayahealthtech.com/images/rivaroxaban.jpg",
-    description: "Factor Xa inhibitor anticoagulant for preventing blood clots"
-  },
-  {
-    id: 18,
-    name: "Baricitinib",
-    category: "Rheumatology",
-    image: "https://inaayahealthtech.com/images/BARIC.jpg",
-    description: "JAK inhibitor used to treat rheumatoid arthritis and other conditions"
-  },
-  {
-    id: 19,
-    name: "Edoxaban",
-    category: "Cardiovascular",
-    image: "https://inaayahealthtech.com/images/Edoxaban.jpg",
-    description: "Factor Xa inhibitor for treatment and prevention of blood clots"
-  },
-  {
-    id: 20,
-    name: "Vortioxetine",
-    category: "Neurology",
-    image: "https://inaayahealthtech.com/images/vortioxetine.jpg",
-    description: "Multimodal antidepressant for treating major depressive disorder"
+    name: "INAPOD-200",
+    category: "Antibiotics",
+    image: "https://inaayahealthtech.com/images/inapod-200.jpg",
+    description: "Cefpodoxime Tablets IP 200mg | Packing: 10x10 | MRP: ₹3650.00"
   }
 ];
 
 const categories = [
   "All",
+  "Antibiotics",
   "Cardiovascular",
   "Neurology",
   "Diabetes",
@@ -165,6 +110,7 @@ const categories = [
 ];
 
 const categoryIcons = {
+  "Antibiotics": Pill,
   "Cardiovascular": Heart,
   "Neurology": TestTube,
   "Diabetes": PillBottle,

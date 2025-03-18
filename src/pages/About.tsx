@@ -17,25 +17,25 @@ const About = () => {
       name: "Sarah Johnson",
       role: "Founder & CEO",
       image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
-      bio: "With over 15 years of experience in real estate and interior design, Sarah founded Homes N Homies with a vision to create living spaces that reflect the unique personalities of each client."
+      bio: "With over 15 years of experience in pharmaceutical development, Sarah founded Inaaya Healthtech with a vision to create innovative healthcare solutions accessible to all."
     },
     {
       name: "Michael Chen",
-      role: "Lead Designer",
+      role: "Lead Researcher",
       image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
-      bio: "Michael brings his innovative approach and creative eye to every project, ensuring that each space is both functional and aesthetically pleasing."
+      bio: "Michael brings his innovative approach and pharmaceutical expertise to every project, ensuring that each product meets the highest standards of efficacy and safety."
     },
     {
       name: "Emma Rodriguez",
-      role: "Real Estate Manager",
+      role: "Quality Assurance Manager",
       image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
-      bio: "Emma's expertise in the real estate market helps clients find their perfect property in the ideal location, considering both current needs and future growth."
+      bio: "Emma's expertise in pharmaceutical quality assurance helps maintain rigorous standards across all our products, ensuring compliance with international regulations."
     },
     {
       name: "David Williams",
-      role: "Project Manager",
+      role: "Production Manager",
       image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
-      bio: "David ensures that every project runs smoothly from concept to completion, maintaining timelines and exceeding client expectations."
+      bio: "David ensures that every production run meets our exacting standards, maintaining timelines while ensuring product quality and consistency."
     },
   ];
 
@@ -56,11 +56,11 @@ const About = () => {
               About Us
             </span>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
-              Creating Spaces That Inspire
+              Advancing Healthcare Through Innovation
             </h1>
             <p className="text-xl text-muted-foreground mb-10">
-              At Homes N Homies, we believe that a well-designed home is the foundation for a well-lived life. 
-              Our passion is creating spaces that reflect your unique personality and lifestyle.
+              At Inaaya Healthtech, we believe that quality healthcare solutions are fundamental to improving lives. 
+              Our passion is developing pharmaceutical products that enhance health outcomes worldwide.
             </p>
           </div>
           
@@ -71,8 +71,8 @@ const About = () => {
             )}>
               <div className="relative h-[400px] md:h-[600px] rounded-xl overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7" 
-                  alt="Interior design living room" 
+                  src="https://images.unsplash.com/photo-1631549916768-4119b4123a21" 
+                  alt="Pharmaceutical laboratory" 
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -84,18 +84,18 @@ const About = () => {
             )}>
               <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Our Story</h2>
               <p className="text-muted-foreground">
-                Founded in 2015, Homes N Homies started with a simple mission: to create beautiful, functional 
-                spaces that enhance our clients' everyday lives. What began as a small operation has grown into 
-                a full-service design and real estate company.
+                Founded in 2015, Inaaya Healthtech started with a simple mission: to create effective, affordable 
+                pharmaceutical solutions that enhance healthcare delivery and patient outcomes. What began as a small operation has grown into 
+                a full-service pharmaceutical company.
               </p>
               <p className="text-muted-foreground">
-                Our team of experienced designers, real estate experts, and renovation specialists work 
-                collaboratively to deliver exceptional results. We pride ourselves on our attention to detail, 
-                commitment to quality, and personalized approach to each project.
+                Our team of experienced researchers, quality assurance experts, and pharmaceutical specialists work 
+                collaboratively to deliver exceptional products. We pride ourselves on our attention to detail, 
+                commitment to quality, and patient-centered approach to every formulation.
               </p>
               <p className="text-muted-foreground">
-                Whether you're looking for your dream home, want to renovate your current space, or need 
-                professional staging to sell your property, we're here to guide you through every step of the process.
+                Based in Panchkula, Haryana, we serve healthcare providers and patients nationwide with our 
+                growing portfolio of antibiotics and other pharmaceutical products.
               </p>
             </div>
           </div>
@@ -127,16 +127,16 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                title: "Design Excellence",
-                description: "We believe in creating spaces that are not only beautiful but also functional and tailored to each client's unique needs and lifestyle."
+                title: "Quality Excellence",
+                description: "We believe in creating pharmaceutical products that meet the highest standards of quality, efficacy, and safety to improve patient outcomes."
               },
               {
-                title: "Client-Centered Approach",
-                description: "Our clients are at the heart of everything we do. We listen carefully to your vision and work collaboratively to bring it to life."
+                title: "Patient-Centered Approach",
+                description: "Patients are at the heart of everything we do. We develop solutions with their needs in mind, focusing on accessibility and effectiveness."
               },
               {
                 title: "Integrity & Transparency",
-                description: "We operate with honesty and transparency throughout every project, ensuring clear communication and trustworthy service."
+                description: "We operate with honesty and transparency throughout our processes, ensuring clear communication and trustworthy products."
               },
             ].map((value, index) => (
               <div 
@@ -173,14 +173,14 @@ const About = () => {
               "text-3xl md:text-4xl font-bold mb-4 tracking-tight transition-all duration-700 delay-150",
               isTeamIntersecting ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             )}>
-              Meet the Experts Behind Homes N Homies
+              Meet the Experts Behind Inaaya Healthtech
             </h2>
             <p className={cn(
               "text-lg text-muted-foreground max-w-2xl mx-auto transition-all duration-700 delay-300",
               isTeamIntersecting ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             )}>
-              Our talented team brings together expertise in design, real estate, and project management 
-              to deliver exceptional results for our clients.
+              Our talented team brings together expertise in pharmaceutical research, development, and quality assurance 
+              to deliver exceptional healthcare solutions for our clients.
             </p>
           </div>
           
@@ -217,10 +217,10 @@ const About = () => {
         <div className="container mx-auto">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">
-              Ready to Transform Your Space?
+              Interested in Our Healthcare Solutions?
             </h2>
             <p className="text-lg text-white/80 mb-10 max-w-2xl mx-auto">
-              Let our expert team help you create the home you've always dreamed of.
+              Let our expert team help you find the right pharmaceutical products for your healthcare needs.
             </p>
             <a 
               href="/contact"

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import ServiceCard from '@/components/ServiceCard';
 import { useIntersectionObserver } from '@/lib/animations';
 import { cn } from '@/lib/utils';
-import { Home, Paintbrush, Users, Key, Settings, RefreshCw, Sparkles, Search, ArrowRight } from 'lucide-react';
+import { Flask, PillBottle, Users, Microscope, Stethoscope, Tablets, Sparkles, Search, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Services = () => {
@@ -16,69 +16,69 @@ const Services = () => {
 
   const servicesList = [
     {
-      icon: Home,
-      title: 'Real Estate',
-      description: 'Find your dream home with our extensive portfolio of properties in prime locations. Our experienced agents will guide you through the buying process.',
+      icon: PillBottle,
+      title: 'Antibiotics',
+      description: 'Access our comprehensive range of antibiotics designed to treat various bacterial infections effectively and safely.',
       features: [
-        'Property search and viewings',
-        'Market analysis and valuations',
-        'Negotiation and closing support',
-        'First-time buyer guidance'
+        'Broad-spectrum antibiotics',
+        'Cephalosporins and penicillins',
+        'Macrolide antibiotics',
+        'Combination antibiotic therapies'
       ]
     },
     {
-      icon: Paintbrush,
-      title: 'Interior Design',
-      description: 'Transform your space with our expert interior design services tailored to your style, needs, and budget.',
+      icon: Flask,
+      title: 'Pharmaceutical Research',
+      description: 'Our dedicated research team works to develop innovative pharmaceutical solutions for evolving healthcare challenges.',
       features: [
-        'Concept development',
-        'Space planning',
-        'Material and furniture selection',
-        'Project management'
+        'New formulation development',
+        'Drug stability studies',
+        'Bioavailability enhancement',
+        'Excipient compatibility studies'
+      ]
+    },
+    {
+      icon: Microscope,
+      title: 'Quality Control',
+      description: 'We maintain rigorous quality control processes to ensure our products meet the highest standards of safety and efficacy.',
+      features: [
+        'Raw material testing',
+        'In-process quality checks',
+        'Finished product analysis',
+        'Stability monitoring'
+      ]
+    },
+    {
+      icon: Tablets,
+      title: 'Contract Manufacturing',
+      description: 'Our state-of-the-art manufacturing facilities provide reliable contract manufacturing services for pharmaceutical companies.',
+      features: [
+        'Tablet and capsule production',
+        'Liquid formulations',
+        'Packaging solutions',
+        'Regulatory documentation'
+      ]
+    },
+    {
+      icon: Stethoscope,
+      title: 'Healthcare Consulting',
+      description: 'Our pharmaceutical experts offer consulting services to healthcare providers and institutions on optimal medication use.',
+      features: [
+        'Formulary development',
+        'Medication protocols',
+        'Antibiotic stewardship',
+        'Pharmacovigilance support'
       ]
     },
     {
       icon: Users,
-      title: 'Home Staging',
-      description: 'Present your property in the best light with our professional home staging to attract potential buyers and maximize your selling price.',
+      title: 'Medical Education',
+      description: 'We provide educational resources and training for healthcare professionals on the appropriate use of our pharmaceutical products.',
       features: [
-        'Pre-listing consultation',
-        'Furniture rental and setup',
-        'Accessory selection',
-        'Photography preparation'
-      ]
-    },
-    {
-      icon: Key,
-      title: 'Property Management',
-      description: 'Comprehensive property management services for homeowners and investors, handling all aspects of rental property maintenance.',
-      features: [
-        'Tenant screening and placement',
-        'Rent collection',
-        'Maintenance coordination',
-        'Regular property inspections'
-      ]
-    },
-    {
-      icon: Settings,
-      title: 'Renovation',
-      description: 'Upgrade your space with our high-quality renovation and remodeling services, from minor updates to complete transformations.',
-      features: [
-        'Kitchen and bathroom remodels',
-        'Structural modifications',
-        'Flooring and lighting updates',
-        'Permit acquisition'
-      ]
-    },
-    {
-      icon: RefreshCw,
-      title: 'Home Styling',
-      description: 'Refresh your space with our styling expertise to create a cohesive and inviting atmosphere that reflects your personality.',
-      features: [
-        'Color scheme development',
-        'Accessory selection and placement',
-        'Art and décor consultation',
-        'Seasonal refreshes'
+        'Continuing education programs',
+        'Product information sessions',
+        'Clinical application guidance',
+        'Research updates and publications'
       ]
     },
   ];
@@ -86,26 +86,26 @@ const Services = () => {
   const processSteps = [
     {
       number: '01',
-      title: 'Consultation',
-      description: 'We begin with a thorough consultation to understand your needs, preferences, and budget.',
+      title: 'Research & Development',
+      description: 'We begin with extensive research to develop pharmaceutical formulations that address specific healthcare needs.',
       icon: Sparkles
     },
     {
       number: '02',
-      title: 'Planning & Design',
-      description: 'Our team creates a detailed plan and design concept tailored to your specific requirements.',
+      title: 'Testing & Quality Assurance',
+      description: 'Our products undergo rigorous testing to ensure they meet all safety, efficacy, and regulatory standards.',
       icon: Search
     },
     {
       number: '03',
-      title: 'Implementation',
-      description: 'We bring your vision to life with meticulous attention to detail and quality craftsmanship.',
-      icon: Settings
+      title: 'Manufacturing',
+      description: 'We manufacture our products in state-of-the-art facilities following strict Good Manufacturing Practices (GMP).',
+      icon: PillBottle
     },
     {
       number: '04',
-      title: 'Final Review',
-      description: 'We ensure everything meets our high standards and make any necessary adjustments.',
+      title: 'Distribution & Support',
+      description: 'We ensure reliable distribution of our products and provide ongoing support to healthcare providers and patients.',
       icon: Users
     },
   ];
@@ -127,11 +127,11 @@ const Services = () => {
               Our Services
             </span>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
-              Comprehensive Home Solutions
+              Comprehensive Healthcare Solutions
             </h1>
             <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-              From finding your perfect property to designing and maintaining your dream home, 
-              we offer a complete range of services to meet all your housing needs.
+              From innovative antibiotic formulations to pharmaceutical research and development, 
+              we offer a complete range of services to address healthcare challenges.
             </p>
           </div>
         </div>
@@ -192,8 +192,8 @@ const Services = () => {
               How We Work
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We follow a structured approach to ensure that every project is completed with the highest 
-              standards of quality and client satisfaction.
+              We follow a structured approach to ensure that every product we develop meets the highest 
+              standards of quality, safety, and efficacy.
             </p>
           </div>
           
@@ -240,8 +240,8 @@ const Services = () => {
               Ready to Get Started?
             </h2>
             <p className="text-lg text-white/80 mb-10 max-w-2xl mx-auto">
-              Contact us today to discuss your project and discover how our services can help you 
-              create the perfect living space.
+              Contact us today to discuss your pharmaceutical needs and discover how our products and services can 
+              help address your healthcare challenges.
             </p>
             <Link 
               to="/contact"
