@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import ServiceCard from '@/components/ServiceCard';
 import { useIntersectionObserver } from '@/lib/animations';
@@ -86,27 +87,32 @@ const Services = () => {
     {
       icon: FlaskConical,
       title: "Research & Development",
-      description: "Our team of scientists and pharmacists develop innovative formulations based on the latest research in healthcare."
+      description: "Our team of scientists and pharmacists develop innovative formulations based on the latest research in healthcare.",
+      number: 1
     },
     {
       icon: Microscope,
       title: "Quality Testing",
-      description: "Every product undergoes rigorous quality testing to ensure safety, efficacy and compliance with regulatory standards."
+      description: "Every product undergoes rigorous quality testing to ensure safety, efficacy and compliance with regulatory standards.",
+      number: 2
     },
     {
       icon: TrendingUp,
       title: "Marketing & Market Research",
-      description: "We conduct extensive market research to understand product demands and customer needs, allowing us to develop better healthcare solutions."
+      description: "We conduct extensive market research to understand product demands and customer needs, allowing us to develop better healthcare solutions.",
+      number: 3
     },
     {
       icon: Truck,
       title: "Distribution",
-      description: "Our nationwide distribution network ensures timely delivery of our products to pharmacies, hospitals and healthcare providers."
+      description: "Our nationwide distribution network ensures timely delivery of our products to pharmacies, hospitals and healthcare providers.",
+      number: 4
     },
     {
       icon: HeartPulse,
       title: "Customer Feedback",
-      description: "We continuously gather and implement feedback from healthcare professionals and patients to improve our products."
+      description: "We continuously gather and implement feedback from healthcare professionals and patients to improve our products.",
+      number: 5
     }
   ];
 

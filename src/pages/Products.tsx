@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useIntersectionObserver } from '@/lib/animations';
 import { cn } from '@/lib/utils';
-import { Search, Filter, Pill, TestTube, Heart, Microscope, Stethoscope, PillBottle, Tablets, Droplet, Bone, CookingPot, Flower, Circle, Leaf, Eye, Ear, Tooth, Shower, Star, Baby, Syringe } from 'lucide-react';
+import { Search, Filter, Pill, TestTube, Heart, Microscope, Stethoscope, PillBottle, Tablets, Droplet, Bone, CookingPot, Flower, Circle, Leaf, Eye, Ear, ShowerHead, Star, Baby, Syringe } from 'lucide-react';
 import ProductCard from '@/components/ProductCard';
 import { productsData } from '@/data/productsData';
 
@@ -33,8 +33,8 @@ const categoryIcons = {
   "Soft Gel": Circle,
   "Ayurvedic Products": Leaf,
   "Eye & Ent Drops": Eye,
-  "Dental": Tooth,
-  "Dermatology": Shower,
+  "Dental": Ear, // Changed from Tooth to Ear since Tooth doesn't exist
+  "Dermatology": ShowerHead, // Changed from Shower to ShowerHead
   "Multi Vitamins": Star,
   "Cardiac": Heart,
   "Pediatrics": Baby,

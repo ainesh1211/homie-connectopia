@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useToast } from '@/components/ui/use-toast';
 import { useIntersectionObserver } from '@/lib/animations';
@@ -12,7 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { TabletsIcon, Users, CreditCard, ShoppingBag, TrendingUp, HandshakeIcon, BuildingStore, Award, Shield, Calendar, BookUserIcon, Boxes } from 'lucide-react';
+import { TabletsIcon, Users, CreditCard, ShoppingBag, TrendingUp, HandshakeIcon, Building, Award, Shield, Calendar, BookUserIcon, Boxes } from 'lucide-react';
 
 const franchiseSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
