@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import ServiceCard from '@/components/ServiceCard';
 import { useIntersectionObserver } from '@/lib/animations';
 import { cn } from '@/lib/utils';
-import { PillBottle, Users, Microscope, Stethoscope, Tablets, Sparkles, Search, ArrowRight } from 'lucide-react';
+import { PillBottle, Users, Microscope, Stethoscope, Tablets, Sparkles, Search, ArrowRight, FlaskConical, TrendingUp, Truck, HeartPulse } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Services = () => {
@@ -82,31 +82,32 @@ const Services = () => {
     },
   ];
 
-  const processSteps = [
+  const workflowSteps = [
     {
-      number: '01',
-      title: 'Research & Development',
-      description: 'We begin with extensive research to develop pharmaceutical formulations that address specific healthcare needs.',
-      icon: Sparkles
+      icon: FlaskConical,
+      title: "Research & Development",
+      description: "Our team of scientists and pharmacists develop innovative formulations based on the latest research in healthcare."
     },
     {
-      number: '02',
-      title: 'Testing & Quality Assurance',
-      description: 'Our products undergo rigorous testing to ensure they meet all safety, efficacy, and regulatory standards.',
-      icon: Search
+      icon: Microscope,
+      title: "Quality Testing",
+      description: "Every product undergoes rigorous quality testing to ensure safety, efficacy and compliance with regulatory standards."
     },
     {
-      number: '03',
-      title: 'Manufacturing',
-      description: 'We manufacture our products in state-of-the-art facilities following strict Good Manufacturing Practices (GMP).',
-      icon: PillBottle
+      icon: TrendingUp,
+      title: "Marketing & Market Research",
+      description: "We conduct extensive market research to understand product demands and customer needs, allowing us to develop better healthcare solutions."
     },
     {
-      number: '04',
-      title: 'Distribution & Support',
-      description: 'We ensure reliable distribution of our products and provide ongoing support to healthcare providers and patients.',
-      icon: Users
+      icon: Truck,
+      title: "Distribution",
+      description: "Our nationwide distribution network ensures timely delivery of our products to pharmacies, hospitals and healthcare providers."
     },
+    {
+      icon: HeartPulse,
+      title: "Customer Feedback",
+      description: "We continuously gather and implement feedback from healthcare professionals and patients to improve our products."
+    }
   ];
 
   return (
@@ -197,7 +198,7 @@ const Services = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {processSteps.map((step, index) => (
+            {workflowSteps.map((step, index) => (
               <div 
                 key={step.number}
                 className={cn(
@@ -206,7 +207,7 @@ const Services = () => {
                 )}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
-                {index < processSteps.length - 1 && (
+                {index < workflowSteps.length - 1 && (
                   <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
                     <ArrowRight className="w-6 h-6 text-primary/50" />
                   </div>

@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import { ImageIcon, LogOut, Package, Settings } from 'lucide-react';
+import { ImageIcon, LogOut, Package, Settings, Users } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import AdminNavbar from '@/components/admin/AdminNavbar';
 
@@ -50,6 +50,21 @@ const AdminDashboard = ({ logout }: AdminDashboardProps) => {
             <CardContent>
               <p className="text-sm text-muted-foreground">
                 Coming soon: Edit product descriptions, pricing and other details
+              </p>
+            </CardContent>
+          </Card>
+          
+          <Card className="h-full opacity-60 cursor-not-allowed">
+            <CardHeader className="pb-3">
+              <CardTitle className="flex items-center gap-2">
+                <Users className="h-5 w-5" />
+                Franchise Management
+              </CardTitle>
+              <CardDescription>Manage franchise applications</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Coming soon: View and manage franchise applications and partners
               </p>
             </CardContent>
           </Card>

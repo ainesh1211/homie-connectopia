@@ -1,27 +1,44 @@
+
 import { useState, useEffect } from 'react';
 import { useIntersectionObserver } from '@/lib/animations';
 import { cn } from '@/lib/utils';
-import { Search, Filter, Pill, TestTube, Heart, Microscope, Stethoscope, PillBottle, Tablets, Droplet } from 'lucide-react';
+import { Search, Filter, Pill, TestTube, Heart, Microscope, Stethoscope, PillBottle, Tablets, Droplet, Bone, CookingPot, Flower, Circle, Leaf, Eye, Ear, Tooth, Shower, Star, Baby, Syringe } from 'lucide-react';
 import ProductCard from '@/components/ProductCard';
 import { productsData } from '@/data/productsData';
 
 const categories = [
   "All",
   "Antibiotics",
-  "Cardiovascular",
-  "Neurology",
-  "Diabetes",
-  "Respiratory",
-  "Rheumatology"
+  "Ortho",
+  "Gastro",
+  "Antihistamines, Cough & Cold",
+  "Gynaecology",
+  "Soft Gel",
+  "Ayurvedic Products",
+  "Eye & Ent Drops",
+  "Dental",
+  "Dermatology",
+  "Multi Vitamins",
+  "Cardiac",
+  "Pediatrics",
+  "Injections"
 ];
 
 const categoryIcons = {
   "Antibiotics": Pill,
-  "Cardiovascular": Heart,
-  "Neurology": TestTube,
-  "Diabetes": PillBottle,
-  "Respiratory": Droplet,
-  "Rheumatology": Stethoscope
+  "Ortho": Bone,
+  "Gastro": CookingPot,
+  "Antihistamines, Cough & Cold": Droplet,
+  "Gynaecology": Flower,
+  "Soft Gel": Circle,
+  "Ayurvedic Products": Leaf,
+  "Eye & Ent Drops": Eye,
+  "Dental": Tooth,
+  "Dermatology": Shower,
+  "Multi Vitamins": Star,
+  "Cardiac": Heart,
+  "Pediatrics": Baby,
+  "Injections": Syringe
 };
 
 const Products = () => {

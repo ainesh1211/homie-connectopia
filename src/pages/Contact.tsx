@@ -16,17 +16,17 @@ const Contact = () => {
     {
       icon: MapPin,
       title: 'Our Location',
-      content: '123 Design Street, Creative City, CA 90210',
+      content: 'Plot No 229, Industrial Area Phase 1, Panchkula, Haryana',
     },
     {
       icon: Phone,
       title: 'Phone Number',
-      content: '(123) 456-7890',
+      content: '+919297887888, +917009178460, +918054188881',
     },
     {
       icon: Mail,
       title: 'Email Address',
-      content: 'info@homesnhomies.com',
+      content: 'gm@inaayahealthtech.com',
     },
     {
       icon: Clock,

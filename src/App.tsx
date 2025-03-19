@@ -12,10 +12,12 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Products from "./pages/Products";
 import Contact from "./pages/Contact";
+import Franchise from "./pages/Franchise";
 import NotFound from "./pages/NotFound";
 import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminProductManager from "./pages/admin/AdminProductManager";
+import LoginPortal from "./pages/LoginPortal";
 
 const queryClient = new QueryClient();
 
@@ -57,7 +59,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated } = useAuth();
   
   if (!isAuthenticated) {
-    return <Navigate to="/admin" replace />;
+    return <Navigate to="/login" replace />;
   }
   
   return <>{children}</>;
@@ -73,14 +75,15 @@ const App = () => {
         <Sonner />
         <BrowserRouter>
           <ScrollToTop />
-          {!window.location.pathname.startsWith("/admin") && <Navbar />}
+          {!window.location.pathname.startsWith("/admin") && window.location.pathname !== "/login" && <Navbar />}
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
             <Route path="/services" element={<Services />} />
             <Route path="/products" element={<Products />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/admin" element={<AdminLogin login={auth.login} isAuthenticated={auth.isAuthenticated} />} />
+            <Route path="/franchise" element={<Franchise />} />
+            <Route path="/login" element={<LoginPortal login={auth.login} isAuthenticated={auth.isAuthenticated} />} />
             <Route 
               path="/admin/dashboard" 
               element={
@@ -99,7 +102,7 @@ const App = () => {
             />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          {!window.location.pathname.startsWith("/admin") && <Footer />}
+          {!window.location.pathname.startsWith("/admin") && window.location.pathname !== "/login" && <Footer />}
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
