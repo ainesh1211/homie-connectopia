@@ -1,9 +1,8 @@
-
 import { useEffect } from 'react';
 import ServiceCard from '@/components/ServiceCard';
 import { useIntersectionObserver } from '@/lib/animations';
 import { cn } from '@/lib/utils';
-import { Flask, PillBottle, Users, Microscope, Stethoscope, Tablets, Sparkles, Search, ArrowRight } from 'lucide-react';
+import { PillBottle, Users, Microscope, Stethoscope, Tablets, Sparkles, Search, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Services = () => {
@@ -27,7 +26,7 @@ const Services = () => {
       ]
     },
     {
-      icon: Flask,
+      icon: Tablets,
       title: 'Pharmaceutical Research',
       description: 'Our dedicated research team works to develop innovative pharmaceutical solutions for evolving healthcare challenges.',
       features: [
@@ -49,7 +48,7 @@ const Services = () => {
       ]
     },
     {
-      icon: Tablets,
+      icon: PillBottle,
       title: 'Contract Manufacturing',
       description: 'Our state-of-the-art manufacturing facilities provide reliable contract manufacturing services for pharmaceutical companies.',
       features: [
