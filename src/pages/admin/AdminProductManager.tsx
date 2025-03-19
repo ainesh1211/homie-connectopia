@@ -1,17 +1,15 @@
 
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Image, Check, X, Upload, RefreshCw, Search, Plus, Edit, Trash2 } from 'lucide-react';
+import { Search, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card, CardContent } from '@/components/ui/card';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from '@/components/ui/dialog';
 import { toast } from '@/components/ui/use-toast';
 import AdminNavbar from '@/components/admin/AdminNavbar';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
+import ProductCard from '@/components/admin/ProductCard';
+import ImageDialog from '@/components/admin/ImageDialog';
+import ProductDialog from '@/components/admin/ProductDialog';
+import DeleteDialog from '@/components/admin/DeleteDialog';
 
 // Sample product data
 import { productsData, Product } from '@/data/productsData';
@@ -279,52 +277,13 @@ const AdminProductManager = ({ logout }: AdminProductManagerProps) => {
         
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {filteredProducts.map(product => (
-            <Card key={product.id} className="overflow-hidden">
-              <div className="aspect-square relative bg-gray-100 overflow-hidden">
-                <img 
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover transition-all duration-300 hover:scale-105"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = "https://placehold.co/400x400/e2e8f0/64748b?text=Product+Image";
-                  }}
-                />
-                <Button 
-                  variant="secondary" 
-                  size="sm" 
-                  className="absolute bottom-2 right-2"
-                  onClick={() => openImageDialog(product)}
-                >
-                  <Image className="h-4 w-4 mr-1" />
-                  Change
-                </Button>
-              </div>
-              <CardContent className="p-4">
-                <h3 className="font-medium mb-1 truncate">{product.name}</h3>
-                <p className="text-xs text-muted-foreground mb-3">{product.category}</p>
-                
-                <div className="flex items-center space-x-2 mt-2">
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="flex-1" 
-                    onClick={() => handleEditProduct(product)}
-                  >
-                    <Edit className="h-3.5 w-3.5 mr-1" />
-                    Edit
-                  </Button>
-                  <Button 
-                    variant="destructive" 
-                    size="sm" 
-                    className="flex-1" 
-                    onClick={() => handleDeleteConfirmation(product)}
-                  >
-                    <Trash2 className="h-3.5 w-3.5 mr-1" />
-                    Delete
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+            <ProductCard 
+              key={product.id}
+              product={product}
+              onEdit={handleEditProduct}
+              onDelete={handleDeleteConfirmation}
+              onImageChange={openImageDialog}
+            />
           ))}
         </div>
         
@@ -336,229 +295,36 @@ const AdminProductManager = ({ logout }: AdminProductManagerProps) => {
       </main>
       
       {/* Image Dialog */}
-      <Dialog open={isImageDialogOpen} onOpenChange={setIsImageDialogOpen}>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle>Update Product Image</DialogTitle>
-            <DialogDescription>
-              {selectedProduct?.name} - {selectedProduct?.category}
-            </DialogDescription>
-          </DialogHeader>
-          
-          <div className="grid gap-4 py-4">
-            <div className="aspect-square bg-gray-100 rounded-md overflow-hidden">
-              <img 
-                src={selectedProduct?.tempImage || selectedProduct?.image}
-                alt={selectedProduct?.name}
-                className="w-full h-full object-contain p-2"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = "https://placehold.co/400x400/e2e8f0/64748b?text=Product+Image";
-                }}
-              />
-            </div>
-            
-            <div className="grid grid-cols-2 gap-2">
-              <label className="cursor-pointer">
-                <Input 
-                  type="file" 
-                  accept="image/*" 
-                  className="hidden" 
-                  onChange={handleImageChange}
-                />
-                <div className="border border-dashed border-gray-300 rounded flex items-center justify-center h-10 bg-gray-50 hover:bg-gray-100 transition-all">
-                  <Upload className="h-4 w-4 mr-2 text-gray-500" />
-                  <span className="text-sm text-gray-600">Select Image</span>
-                </div>
-              </label>
-              
-              <Button
-                onClick={handleSaveImage}
-                disabled={!selectedProduct?.tempImage || isLoading}
-                className="w-full"
-              >
-                {isLoading ? (
-                  <>
-                    <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
-                    Saving...
-                  </>
-                ) : (
-                  <>
-                    <Check className="h-4 w-4 mr-2" />
-                    Save Changes
-                  </>
-                )}
-              </Button>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
+      <ImageDialog
+        isOpen={isImageDialogOpen}
+        onOpenChange={setIsImageDialogOpen}
+        selectedProduct={selectedProduct}
+        isLoading={isLoading}
+        onImageChange={handleImageChange}
+        onSaveImage={handleSaveImage}
+      />
       
       {/* Product Dialog */}
-      <Dialog open={isProductDialogOpen} onOpenChange={setIsProductDialogOpen}>
-        <DialogContent className="sm:max-w-lg">
-          <DialogHeader>
-            <DialogTitle>{editMode ? "Edit Product" : "Add New Product"}</DialogTitle>
-            <DialogDescription>
-              {editMode ? "Update the product details in your catalog" : "Add a new product to your catalog"}
-            </DialogDescription>
-          </DialogHeader>
-          
-          <div className="grid gap-6 py-4">
-            <div className="grid grid-cols-4 gap-4">
-              <div className="col-span-1">
-                <div className="aspect-square bg-gray-100 rounded-md overflow-hidden">
-                  <img 
-                    src={newProduct.tempImage || newProduct.image}
-                    alt="Product preview"
-                    className="w-full h-full object-contain p-2"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = "https://placehold.co/400x400/e2e8f0/64748b?text=Product+Image";
-                    }}
-                  />
-                </div>
-                <label className="cursor-pointer block mt-2">
-                  <Input 
-                    type="file" 
-                    accept="image/*" 
-                    className="hidden" 
-                    onChange={handleNewProductImageChange}
-                  />
-                  <div className="border border-dashed border-gray-300 rounded flex items-center justify-center h-8 bg-gray-50 hover:bg-gray-100 transition-all">
-                    <Upload className="h-3 w-3 mr-1 text-gray-500" />
-                    <span className="text-xs text-gray-600">Select Image</span>
-                  </div>
-                </label>
-              </div>
-              
-              <div className="col-span-3 space-y-4">
-                <div>
-                  <Label htmlFor="name">Product Name</Label>
-                  <Input 
-                    id="name"
-                    value={newProduct.name}
-                    onChange={(e) => setNewProduct({...newProduct, name: e.target.value})}
-                    placeholder="Enter product name"
-                  />
-                </div>
-                
-                <div>
-                  <Label htmlFor="category">Category</Label>
-                  <Select
-                    value={newProduct.category}
-                    onValueChange={(value) => setNewProduct({...newProduct, category: value})}
-                  >
-                    <SelectTrigger id="category">
-                      <SelectValue placeholder="Select a category" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {categories.slice(1).map((category) => (
-                        <SelectItem key={category} value={category}>{category}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-            </div>
-            
-            <div>
-              <Label htmlFor="description">Description</Label>
-              <Textarea 
-                id="description"
-                value={newProduct.description}
-                onChange={(e) => setNewProduct({...newProduct, description: e.target.value})}
-                placeholder="Enter product description"
-                rows={3}
-              />
-            </div>
-            
-            <div className="grid grid-cols-3 gap-4">
-              <div>
-                <Label htmlFor="volume">Volume/Size</Label>
-                <Input 
-                  id="volume"
-                  value={newProduct.volume || ""}
-                  onChange={(e) => setNewProduct({...newProduct, volume: e.target.value})}
-                  placeholder="e.g., 200ml"
-                />
-              </div>
-              
-              <div>
-                <Label htmlFor="packing">Packing</Label>
-                <Input 
-                  id="packing"
-                  value={newProduct.packing || ""}
-                  onChange={(e) => setNewProduct({...newProduct, packing: e.target.value})}
-                  placeholder="e.g., 10x10"
-                />
-              </div>
-              
-              <div>
-                <Label htmlFor="mrp">MRP (₹)</Label>
-                <Input 
-                  id="mrp"
-                  value={newProduct.mrp || ""}
-                  onChange={(e) => setNewProduct({...newProduct, mrp: e.target.value})}
-                  placeholder="e.g., 150"
-                />
-              </div>
-            </div>
-          </div>
-          
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setIsProductDialogOpen(false)}>
-              Cancel
-            </Button>
-            <Button onClick={handleSaveProduct} disabled={!newProduct.name || isLoading}>
-              {isLoading ? (
-                <>
-                  <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
-                  {editMode ? "Updating..." : "Adding..."}
-                </>
-              ) : (
-                <>
-                  <Check className="h-4 w-4 mr-2" />
-                  {editMode ? "Update Product" : "Add Product"}
-                </>
-              )}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      <ProductDialog
+        isOpen={isProductDialogOpen}
+        onOpenChange={setIsProductDialogOpen}
+        newProduct={newProduct}
+        editMode={editMode}
+        isLoading={isLoading}
+        categories={categories}
+        onNewProductChange={setNewProduct}
+        onNewProductImageChange={handleNewProductImageChange}
+        onSaveProduct={handleSaveProduct}
+      />
       
       {/* Delete Confirmation Dialog */}
-      <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle>Delete Product</DialogTitle>
-            <DialogDescription>
-              Are you sure you want to delete "{selectedProduct?.name}"? This action cannot be undone.
-            </DialogDescription>
-          </DialogHeader>
-          
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setIsDeleteDialogOpen(false)}>
-              Cancel
-            </Button>
-            <Button
-              variant="destructive"
-              onClick={handleDeleteProduct}
-              disabled={isLoading}
-            >
-              {isLoading ? (
-                <>
-                  <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
-                  Deleting...
-                </>
-              ) : (
-                <>
-                  <Trash2 className="h-4 w-4 mr-2" />
-                  Delete Product
-                </>
-              )}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+      <DeleteDialog
+        isOpen={isDeleteDialogOpen}
+        onOpenChange={setIsDeleteDialogOpen}
+        selectedProduct={selectedProduct}
+        isLoading={isLoading}
+        onDeleteProduct={handleDeleteProduct}
+      />
     </div>
   );
 };
