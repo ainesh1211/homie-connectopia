@@ -6,38 +6,10 @@ import { cn } from '@/lib/utils';
 const About = () => {
   const [heroRef, isHeroIntersecting] = useIntersectionObserver();
   const [missionRef, isMissionIntersecting] = useIntersectionObserver();
-  const [teamRef, isTeamIntersecting] = useIntersectionObserver();
   
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const teamMembers = [
-    {
-      name: "Sarah Johnson",
-      role: "Founder & CEO",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
-      bio: "With over 15 years of experience in pharmaceutical development, Sarah founded Inaaya Healthtech with a vision to create innovative healthcare solutions accessible to all."
-    },
-    {
-      name: "Michael Chen",
-      role: "Lead Researcher",
-      image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
-      bio: "Michael brings his innovative approach and pharmaceutical expertise to every project, ensuring that each product meets the highest standards of efficacy and safety."
-    },
-    {
-      name: "Emma Rodriguez",
-      role: "Quality Assurance Manager",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
-      bio: "Emma's expertise in pharmaceutical quality assurance helps maintain rigorous standards across all our products, ensuring compliance with international regulations."
-    },
-    {
-      name: "David Williams",
-      role: "Production Manager",
-      image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
-      bio: "David ensures that every production run meets our exacting standards, maintaining timelines while ensuring product quality and consistency."
-    },
-  ];
 
   return (
     <main className="min-h-screen bg-background pt-24 md:pt-32">
@@ -84,18 +56,13 @@ const About = () => {
             )}>
               <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Our Story</h2>
               <p className="text-muted-foreground">
-                Founded in 2015, Inaaya Healthtech started with a simple mission: to create effective, affordable 
-                pharmaceutical solutions that enhance healthcare delivery and patient outcomes. What began as a small operation has grown into 
-                a full-service pharmaceutical company.
+                As one of the esteemed PCD Pharma companies in India, we pride ourselves on our team of highly qualified and skilled professionals dedicated to providing top-quality PCD pharma products, including the latest DCGI-approved molecules.
               </p>
               <p className="text-muted-foreground">
-                Our team of experienced researchers, quality assurance experts, and pharmaceutical specialists work 
-                collaboratively to deliver exceptional products. We pride ourselves on our attention to detail, 
-                commitment to quality, and patient-centered approach to every formulation.
+                Our products are formulated using premium materials sourced from trusted and reliable manufacturers with WHO, ISO, and GMP-certified units. We ensure the use of hygienic ingredients from authentic vendors with extensive expertise in the industry.
               </p>
               <p className="text-muted-foreground">
-                Based in Panchkula, Haryana, we serve healthcare providers and patients nationwide with our 
-                growing portfolio of antibiotics and other pharmaceutical products.
+                Additionally, we offer Exclusive Monopoly Rights, expanding our business into untapped areas by appointing new franchises, distributors, sole distributors, and PCD franchise partners.
               </p>
             </div>
           </div>
@@ -155,63 +122,6 @@ const About = () => {
         </div>
       </section>
       
-      {/* Team Section */}
-      <section className="py-20 px-4">
-        <div 
-          // @ts-ignore - TypeScript doesn't know ref can be assigned to HTMLDivElement
-          ref={teamRef} 
-          className="container mx-auto"
-        >
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <span className={cn(
-              "inline-block px-4 py-1.5 mb-4 text-xs font-semibold tracking-wider uppercase rounded-full bg-primary/10 transition-all duration-700",
-              isTeamIntersecting ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            )}>
-              Our Team
-            </span>
-            <h2 className={cn(
-              "text-3xl md:text-4xl font-bold mb-4 tracking-tight transition-all duration-700 delay-150",
-              isTeamIntersecting ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            )}>
-              Meet the Experts Behind Inaaya Healthtech
-            </h2>
-            <p className={cn(
-              "text-lg text-muted-foreground max-w-2xl mx-auto transition-all duration-700 delay-300",
-              isTeamIntersecting ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            )}>
-              Our talented team brings together expertise in pharmaceutical research, development, and quality assurance 
-              to deliver exceptional healthcare solutions for our clients.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
-              <div 
-                key={member.name}
-                className={cn(
-                  "rounded-xl overflow-hidden glass-morphism hover-lift transition-all duration-700",
-                  isTeamIntersecting ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                )}
-                style={{ transitionDelay: `${index * 150}ms` }}
-              >
-                <div className="h-60 relative overflow-hidden">
-                  <img 
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold">{member.name}</h3>
-                  <p className="text-sm text-primary mb-4">{member.role}</p>
-                  <p className="text-muted-foreground text-sm">{member.bio}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      
       {/* CTA Section */}
       <section className="py-20 px-4 bg-primary text-white">
         <div className="container mx-auto">
@@ -220,7 +130,7 @@ const About = () => {
               Interested in Our Healthcare Solutions?
             </h2>
             <p className="text-lg text-white/80 mb-10 max-w-2xl mx-auto">
-              Let our expert team help you find the right pharmaceutical products for your healthcare needs.
+              Let our expert team help you find the right pharmaceutical products for your healthcare needs. Contact us at +919297887888, +917009178460, +918054188881.
             </p>
             <a 
               href="/contact"

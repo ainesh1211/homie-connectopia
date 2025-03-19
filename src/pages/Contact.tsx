@@ -66,11 +66,8 @@ const Contact = () => {
         <div className="container mx-auto">
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-              {/* Contact Form */}
-              <div className={cn(
-                "transition-all duration-700 delay-150",
-                isIntersecting ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
-              )}>
+              {/* Contact Form - Fixed the visibility issue */}
+              <div>
                 <div className="glass-morphism rounded-xl p-8 md:p-10 shadow-sm">
                   <div className="flex items-center mb-8">
                     <MessageSquare className="w-6 h-6 mr-3 text-primary" />
@@ -83,7 +80,7 @@ const Contact = () => {
               
               {/* Contact Information */}
               <div className={cn(
-                "lg:mt-12 transition-all duration-700 delay-300",
+                "lg:mt-12",
                 isIntersecting ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"
               )}>
                 <h2 className="text-2xl font-bold mb-8">Contact Information</h2>
@@ -93,7 +90,7 @@ const Contact = () => {
                     <div 
                       key={item.title}
                       className={cn(
-                        "flex transition-all duration-700",
+                        "flex",
                         isIntersecting ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                       )}
                       style={{ transitionDelay: `${(index + 2) * 150}ms` }}
@@ -112,13 +109,7 @@ const Contact = () => {
                 </div>
                 
                 {/* Map or Image */}
-                <div 
-                  className={cn(
-                    "w-full h-[300px] rounded-xl overflow-hidden bg-secondary transition-all duration-700",
-                    isIntersecting ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                  )}
-                  style={{ transitionDelay: `900ms` }}
-                >
+                <div className="w-full h-[300px] rounded-xl overflow-hidden bg-secondary">
                   <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url('https://images.unsplash.com/photo-1577017040065-650ee4d43339')` }}></div>
                 </div>
               </div>
@@ -146,24 +137,36 @@ const Contact = () => {
             <div className="space-y-6">
               {[
                 {
-                  question: "What areas do you serve?",
-                  answer: "We primarily serve the greater Los Angeles area, including Beverly Hills, Malibu, Santa Monica, and surrounding neighborhoods."
+                  question: "What is Inaaya Healthtech Pvt. Ltd.?",
+                  answer: "Inaaya Healthtech Pvt. Ltd. is a prominent PCD Pharma company in India, dedicated to providing high-quality pharmaceutical products, including the latest DCGI-approved molecules."
                 },
                 {
-                  question: "How much does an initial consultation cost?",
-                  answer: "Our initial consultations are complimentary. During this meeting, we'll discuss your needs, preferences, and budget to determine how we can best serve you."
+                  question: "What types of products does Inaaya Healthtech offer?",
+                  answer: "We offer a comprehensive range of pharmaceutical products, including antibiotics, gastrointestinal medicines, multivitamins, ayurvedic products, dermatological care, and more. All our liquid products and protein powders are 100% sugar-free."
                 },
                 {
-                  question: "How long does a typical interior design project take?",
-                  answer: "Project timelines vary depending on scope and complexity. A room refresh might take 4-6 weeks, while a complete home redesign could take 3-6 months or more."
+                  question: "How can I apply for a franchise with Inaaya Healthtech?",
+                  answer: "We offer exclusive monopoly rights and are expanding our business into untapped areas. To apply for a franchise, visit our 'Apply for Franchise' page and fill out the application form."
                 },
                 {
-                  question: "Do you offer virtual design services?",
-                  answer: "Yes, we offer virtual design consultations and services for clients who prefer remote collaboration or are located outside our service area."
+                  question: "What are key Features of the PCD Pharma Franchise?",
+                  answer: "Exclusive Geographical Rights: Inaaya Healthtech grants franchise partners exclusive rights to market and distribute its pharmaceutical products within a designated geographical area, ensuring minimal competition and maximum market potential. Low Investment, High Returns: Partnering with Inaaya Healthtech requires a low initial investment compared to setting up an independent pharma business. Franchisees benefit from eliminating costs related to R&D, manufacturing, and product registration, making it a cost-effective opportunity with high-profit potential. Comprehensive Marketing Support: Inaaya Healthtech provides its franchise partners with full marketing support, including promotional materials, training, and strategic assistance to help maximize sales and market penetration. High-Profit Margins: The PCD Pharma Franchise model offers high-profit margins due to low operational costs and strong product demand. Access to WHO-GMP Certified Products: Franchisees gain access to a premium range of pharmaceutical products, all of which are WHO-GMP and ISO certified. Regulatory Compliance & Hassle-Free Operations: Inaaya Healthtech ensures that all manufacturing, packaging, labeling, and distribution processes adhere to strict regulatory standards. Flexible Business Model: Franchise partners can operate from a home office or a small rented space, allowing for greater flexibility in managing the business."
                 },
                 {
-                  question: "Can you work with my existing furniture and decor?",
-                  answer: "Absolutely! We're happy to incorporate your existing pieces into a new design. We'll help you determine what to keep, what to repurpose, and what new items might enhance your space."
+                  question: "In which regions does Inaaya Healthtech operate?",
+                  answer: "We have a presence across multiple states and union territories in India, including Maharashtra, Bihar, Gujarat, Delhi, Karnataka, Uttar Pradesh, Haryana, Punjab, Tamil Nadu, Chandigarh, Himachal Pradesh, Andra Pradesh and many more."
+                },
+                {
+                  question: "How can I contact Inaaya Healthtech for more information?",
+                  answer: "You can reach us via phone at +91 9297887888 / +91 7009178460 / +91 8054188881 or visit our 'Contact Us' page."
+                },
+                {
+                  question: "What is the mission and vision of Inaaya Healthtech?",
+                  answer: "Our mission is to be recognized as a leading PCD Pharma company, delivering superior quality products while fostering long-term partnerships with suppliers and the healthcare community."
+                },
+                {
+                  question: "What is the earning potential for the franchise model?",
+                  answer: "On an investment of 11.5 lakh, franchise partner can start earning 1.5 lakh/monthly and as they scale up, there is potential to reach as much as 5 lakh/month if the franchise partner progresses and wanted to become a super stockiest for a region/state with Inaaya Healthtech."
                 },
               ].map((faq, index) => (
                 <div 

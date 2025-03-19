@@ -1,12 +1,14 @@
 
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Shield, Lock, Eye, EyeOff, User, Store } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { toast } from '@/components/ui/use-toast';
+import { Label } from '@/components/ui/label';
+import { ShieldCheck, ShoppingBag, ArrowLeft } from 'lucide-react';
+import { useToast } from '@/components/ui/use-toast';
 
 interface LoginPortalProps {
   login: (password: string) => boolean;
@@ -14,134 +16,134 @@ interface LoginPortalProps {
 }
 
 const LoginPortal = ({ login, isAuthenticated }: LoginPortalProps) => {
-  const [adminPassword, setAdminPassword] = useState('');
-  const [showAdminPassword, setShowAdminPassword] = useState(false);
-  const [franchiseUsername, setFranchiseUsername] = useState('');
-  const [franchisePassword, setFranchisePassword] = useState('');
-  const [showFranchisePassword, setShowFranchisePassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-
-  // If already authenticated, redirect to dashboard
+  const { toast } = useToast();
+  const [activeTab, setActiveTab] = useState<string>('admin');
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  
   if (isAuthenticated) {
     navigate('/admin/dashboard');
     return null;
   }
-
+  
   const handleAdminLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     
+    // Use the login prop function for admin login
     setTimeout(() => {
-      const success = login(adminPassword);
+      const success = login(password);
       
       if (success) {
         toast({
           title: "Login successful",
-          description: "Welcome to the admin portal",
+          description: "Welcome to the admin dashboard.",
         });
         navigate('/admin/dashboard');
       } else {
         toast({
-          title: "Authentication failed",
-          description: "Incorrect password",
+          title: "Login failed",
+          description: "Invalid credentials. Please try again.",
           variant: "destructive",
         });
       }
       
       setIsLoading(false);
-    }, 800); // Simulate network delay
+    }, 1000);
   };
-
+  
   const handleFranchiseLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
     
-    // This is just a demo - in a real app you would authenticate against a backend
+    // Simulate franchise login (this would connect to a real API in production)
     setTimeout(() => {
       toast({
-        title: "Franchise login not available",
-        description: "This is a demo. Please contact support for your franchise login credentials.",
+        title: "Franchise login unavailable",
+        description: "This is a demo. Please contact support for your login credentials.",
         variant: "destructive",
       });
       setIsLoading(false);
-    }, 800);
+    }, 1000);
   };
-
+  
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="w-full max-w-md px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
+      <div className="max-w-md w-full">
         <div className="mb-8 text-center">
-          <img 
-            src="/lovable-uploads/bae17041-2fa0-4a74-bdb6-1325e7c83377.png" 
-            alt="Inaaya Healthtech Logo" 
-            className="h-16 w-16 mx-auto mb-4"
-          />
-          <h1 className="text-2xl font-bold">Inaaya Healthtech</h1>
+          <div className="flex justify-center mb-4">
+            <a href="/">
+              <img 
+                src="/lovable-uploads/bae17041-2fa0-4a74-bdb6-1325e7c83377.png" 
+                alt="Inaaya Healthtech Logo" 
+                className="h-16 w-16"
+              />
+            </a>
+          </div>
+          <h1 className="text-2xl font-bold">Inaaya Healthtech Portal</h1>
+          <p className="text-sm text-muted-foreground mt-2">Sign in to access your account</p>
         </div>
         
-        <Tabs defaultValue="admin" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 mb-8">
-            <TabsTrigger value="admin" className="flex items-center justify-center gap-2">
-              <Shield className="h-4 w-4" />
+        <Tabs defaultValue="admin" value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <TabsList className="grid w-full grid-cols-2 mb-6">
+            <TabsTrigger value="admin" className="flex items-center gap-2">
+              <ShieldCheck className="h-4 w-4" />
               Admin
             </TabsTrigger>
-            <TabsTrigger value="franchise" className="flex items-center justify-center gap-2">
-              <Store className="h-4 w-4" />
+            <TabsTrigger value="franchise" className="flex items-center gap-2">
+              <ShoppingBag className="h-4 w-4" />
               Franchise
             </TabsTrigger>
           </TabsList>
           
           <TabsContent value="admin">
-            <Card className="shadow-lg">
-              <CardHeader className="text-center">
-                <div className="mx-auto mb-4 h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Shield className="h-6 w-6 text-primary" />
-                </div>
-                <CardTitle className="text-2xl">Admin Login</CardTitle>
-                <CardDescription>Inaaya Healthtech Admin Portal</CardDescription>
+            <Card>
+              <CardHeader>
+                <CardTitle>Admin Login</CardTitle>
+                <CardDescription>
+                  Access the admin dashboard to manage products, orders, and more.
+                </CardDescription>
               </CardHeader>
               <form onSubmit={handleAdminLogin}>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="space-y-2">
-                      <div className="relative">
-                        <Input
-                          id="adminPassword"
-                          type={showAdminPassword ? "text" : "password"}
-                          placeholder="Enter admin password"
-                          value={adminPassword}
-                          onChange={(e) => setAdminPassword(e.target.value)}
-                          className="pr-10"
-                          required
-                        />
-                        <button
-                          type="button"
-                          onClick={() => setShowAdminPassword(!showAdminPassword)}
-                          className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-500"
-                        >
-                          {showAdminPassword ? (
-                            <EyeOff className="h-5 w-5" />
-                          ) : (
-                            <Eye className="h-5 w-5" />
-                          )}
-                        </button>
-                      </div>
-                    </div>
+                <CardContent className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="admin-username">Username</Label>
+                    <Input
+                      id="admin-username"
+                      type="text"
+                      placeholder="Enter your username"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                      required
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="admin-password">Password</Label>
+                    <Input
+                      id="admin-password"
+                      type="password"
+                      placeholder="••••••••"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                    />
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <Button type="submit" className="w-full" disabled={isLoading}>
+                  <Button
+                    type="submit"
+                    className="w-full"
+                    disabled={isLoading}
+                  >
                     {isLoading ? (
                       <>
                         <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-t-transparent"></div>
                         Logging in...
                       </>
                     ) : (
-                      <>
-                        <Lock className="mr-2 h-4 w-4" />
-                        Login
-                      </>
+                      "Sign In"
                     )}
                   </Button>
                 </CardFooter>
@@ -150,66 +152,47 @@ const LoginPortal = ({ login, isAuthenticated }: LoginPortalProps) => {
           </TabsContent>
           
           <TabsContent value="franchise">
-            <Card className="shadow-lg">
-              <CardHeader className="text-center">
-                <div className="mx-auto mb-4 h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Store className="h-6 w-6 text-primary" />
-                </div>
-                <CardTitle className="text-2xl">Franchise Login</CardTitle>
-                <CardDescription>Inaaya Healthtech Franchise Portal</CardDescription>
+            <Card>
+              <CardHeader>
+                <CardTitle>Franchise Partner Login</CardTitle>
+                <CardDescription>
+                  Access your franchise dashboard to place orders, check sales, and more.
+                </CardDescription>
               </CardHeader>
               <form onSubmit={handleFranchiseLogin}>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="space-y-2">
-                      <Input
-                        id="franchiseUsername"
-                        type="text"
-                        placeholder="Username"
-                        value={franchiseUsername}
-                        onChange={(e) => setFranchiseUsername(e.target.value)}
-                        className="pr-10"
-                        required
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <div className="relative">
-                        <Input
-                          id="franchisePassword"
-                          type={showFranchisePassword ? "text" : "password"}
-                          placeholder="Password"
-                          value={franchisePassword}
-                          onChange={(e) => setFranchisePassword(e.target.value)}
-                          className="pr-10"
-                          required
-                        />
-                        <button
-                          type="button"
-                          onClick={() => setShowFranchisePassword(!showFranchisePassword)}
-                          className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400 hover:text-gray-500"
-                        >
-                          {showFranchisePassword ? (
-                            <EyeOff className="h-5 w-5" />
-                          ) : (
-                            <Eye className="h-5 w-5" />
-                          )}
-                        </button>
-                      </div>
-                    </div>
+                <CardContent className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="franchise-username">Franchise ID</Label>
+                    <Input
+                      id="franchise-username"
+                      type="text"
+                      placeholder="Enter your franchise ID"
+                      required
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="franchise-password">Password</Label>
+                    <Input
+                      id="franchise-password"
+                      type="password"
+                      placeholder="••••••••"
+                      required
+                    />
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <Button type="submit" className="w-full" disabled={isLoading}>
+                  <Button
+                    type="submit"
+                    className="w-full"
+                    disabled={isLoading}
+                  >
                     {isLoading ? (
                       <>
                         <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-t-transparent"></div>
                         Logging in...
                       </>
                     ) : (
-                      <>
-                        <User className="mr-2 h-4 w-4" />
-                        Login
-                      </>
+                      "Sign In"
                     )}
                   </Button>
                 </CardFooter>
@@ -218,8 +201,16 @@ const LoginPortal = ({ login, isAuthenticated }: LoginPortalProps) => {
           </TabsContent>
         </Tabs>
         
-        <div className="mt-8 text-center text-sm text-gray-500">
-          <p>Need help? Contact our support team at gm@inaayahealthtech.com</p>
+        <div className="mt-6 text-center">
+          <Button
+            variant="ghost"
+            size="sm"
+            className="text-muted-foreground"
+            onClick={() => navigate('/')}
+          >
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Back to Website
+          </Button>
         </div>
       </div>
     </div>
