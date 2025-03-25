@@ -3,19 +3,12 @@ import { RefreshCw, Upload, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-
-interface ProductImage {
-  id: number;
-  name: string;
-  category: string;
-  image: string;
-  tempImage?: string;
-}
+import { Product } from '@/data/productsData';
 
 interface ImageDialogProps {
   isOpen: boolean;
   onOpenChange: (open: boolean) => void;
-  selectedProduct: ProductImage | null;
+  selectedProduct: (Product & { tempImage?: string }) | null;
   isLoading: boolean;
   onImageChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSaveImage: () => void;

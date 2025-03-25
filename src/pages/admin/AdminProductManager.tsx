@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Search, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -18,14 +17,7 @@ interface AdminProductManagerProps {
   logout: () => void;
 }
 
-interface ProductImage {
-  id: number;
-  name: string;
-  category: string;
-  image: string;
-  tempImage?: string;
-}
-
+// Extending Product type to include tempImage property
 interface ProductForm extends Product {
   tempImage?: string;
 }
@@ -33,7 +25,7 @@ interface ProductForm extends Product {
 const AdminProductManager = ({ logout }: AdminProductManagerProps) => {
   const [products, setProducts] = useState<Product[]>(productsData);
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedProduct, setSelectedProduct] = useState<ProductImage | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isImageDialogOpen, setIsImageDialogOpen] = useState(false);
   const [isProductDialogOpen, setIsProductDialogOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
@@ -217,8 +209,11 @@ const AdminProductManager = ({ logout }: AdminProductManagerProps) => {
     setIsDeleteDialogOpen(true);
   };
   
-  const openImageDialog = (product: ProductImage) => {
-    setSelectedProduct(product);
+  const openImageDialog = (product: Product) => {
+    setSelectedProduct({
+      ...product,
+      tempImage: undefined
+    });
     setIsImageDialogOpen(true);
   };
   
