@@ -3,10 +3,7 @@ import { useState } from 'react';
 import { toast } from '@/components/ui/use-toast';
 import { Product } from '@/data/productsData';
 
-// Extending Product type to include tempImage property
-export interface ProductForm extends Product {
-  tempImage?: string;
-}
+export interface ProductForm extends Product {}
 
 export const useProductManager = (initialProducts: Product[]) => {
   const [products, setProducts] = useState<Product[]>(initialProducts);
@@ -17,7 +14,7 @@ export const useProductManager = (initialProducts: Product[]) => {
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [activeTab, setActiveTab] = useState("all");
-  const [newProduct, setNewProduct] = useState<ProductForm>({
+  const [newProduct, setNewProduct] = useState<Product>({
     id: initialProducts.length + 1,
     name: "",
     category: "Antibiotics",
@@ -217,6 +214,7 @@ export const useProductManager = (initialProducts: Product[]) => {
     activeTab,
     setActiveTab,
     newProduct,
+    setNewProduct,
     editMode,
     filteredProducts: getFilteredProducts(),
     handleImageChange,

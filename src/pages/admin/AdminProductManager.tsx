@@ -1,5 +1,5 @@
 
-import { productsData } from '@/data/productsData';
+import { productsData, categories } from '@/data/productsData';
 import AdminNavbar from '@/components/admin/AdminNavbar';
 import ProductSearchAndFilters from '@/components/admin/ProductSearchAndFilters';
 import ProductGrid from '@/components/admin/ProductGrid';
@@ -13,24 +13,6 @@ interface AdminProductManagerProps {
 }
 
 const AdminProductManager = ({ logout }: AdminProductManagerProps) => {
-  const categories = [
-    "All",
-    "Antibiotics",
-    "Ortho",
-    "Gastro",
-    "Antihistamines, Cough & Cold",
-    "Gynaecology",
-    "Soft Gel",
-    "Ayurvedic Products",
-    "Eye & Ent Drops",
-    "Dental",
-    "Dermatology",
-    "Multi Vitamins",
-    "Cardiac",
-    "Pediatrics",
-    "Injections"
-  ];
-
   const {
     searchQuery,
     setSearchQuery,
@@ -45,6 +27,7 @@ const AdminProductManager = ({ logout }: AdminProductManagerProps) => {
     activeTab,
     setActiveTab,
     newProduct,
+    setNewProduct,
     editMode,
     filteredProducts,
     handleImageChange,
@@ -104,7 +87,7 @@ const AdminProductManager = ({ logout }: AdminProductManagerProps) => {
         newProduct={newProduct}
         editMode={editMode}
         isLoading={isLoading}
-        categories={categories}
+        categories={categories.slice(1)}
         onNewProductChange={setNewProduct}
         onNewProductImageChange={handleNewProductImageChange}
         onSaveProduct={handleSaveProduct}

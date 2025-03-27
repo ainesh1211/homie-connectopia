@@ -1,6 +1,7 @@
 
 import { cn } from "@/lib/utils";
 import { Pill, Heart, Bone, CookingPot, Droplet, Flower, Circle, Leaf, Eye, Ear, ShowerHead, Star, Baby, Syringe } from 'lucide-react';
+import { categories } from '@/data/productsData';
 
 // Define the icon mapping as a separate object
 export const categoryIcons = {
@@ -19,25 +20,6 @@ export const categoryIcons = {
   "Pediatrics": Baby,
   "Injections": Syringe
 };
-
-// Define categories as a constant that can be imported elsewhere
-export const categories = [
-  "All",
-  "Antibiotics",
-  "Ortho",
-  "Gastro",
-  "Antihistamines, Cough & Cold",
-  "Gynaecology",
-  "Soft Gel",
-  "Ayurvedic Products",
-  "Eye & Ent Drops",
-  "Dental",
-  "Dermatology",
-  "Multi Vitamins",
-  "Cardiac",
-  "Pediatrics",
-  "Injections"
-];
 
 interface CategoryFiltersProps {
   selectedCategory: string;
